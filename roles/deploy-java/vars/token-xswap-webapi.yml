@@ -1,0 +1,6 @@
+environ:
+  API_HOST_PORT: 21015
+  API_INNER_PORT: 11030
+  CONFIG_SVC_HOST: "{{ CONF_HOST }}"
+  CONFIG_SVC_PORT: 22000
+  DB_NAME: mini-token-xswap

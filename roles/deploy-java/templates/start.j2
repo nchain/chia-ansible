@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# export environ vars
+export JAVA_HOME='/usr/lib/jvm/jre'
+
+export TZ='Asia/Shanghai'
+
+export MGP_LOG_LEVEL=WARN
+export MGP_SERVICE_ENVIRONMENT=dev
+export MGP_SERVICE_DEBUG_MODE=false
+export MGP_SERVICE_ENABLE_SWAGGER=true
+
+{% if 'MYSQL_HOST' in envdb and 'MYSQL_PORT' in envdb and 'DB_NAME' in environ  %}
+export MYSQL_URL="jdbc:mysql://{{ envdb.MYSQL_HOST }}:{{ envdb.MYSQL_PORT }}/{{ environ.DB_NAME }}?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false"
+export configSqlUrl="jdbc:mysql://{{ envdb.MYSQL_HOST }}:{{ envdb.MYSQL_PORT }}/{{ environ.DB_NAME }}?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&useSSL=false&user={{ envdb.MYSQL_USERNAME }}&password={{ envdb.MYSQL_USEPSWD }}"
+{% endif %}
+
+{% if 'CONFIG_SVC_HOST' in environ and 'CONFIG_SVC_PORT' in environ %}
+export configUri="http://{{ environ.CONFIG_SVC_HOST }}:{{ environ.CONFIG_SVC_PORT }}"
+{% endif %}
+
+export MYSQL_INITIALSIZE=20
+export MYSQL_MIN_IDLE=20
+export MYSQL_MAX_ACTIVE=20
+
+export TASK_LOG_PATH='/tmp/logs/'
+
+{% for var_name, var_value in environ.items() %}
+export {{ var_name }}={{ var_value }}
+{% endfor %}
+
+# environmemt init
+
+app={{ PROJ }}
+
+mkdir -p /tmp/{{ ORG }}/$app
+{% if 'API_HOST_PORT' in environ  %}
+touch "/tmp/{{ ORG }}/${app}/port_${app}_{{ environ.API_HOST_PORT }}"
+{% endif %}
+
+sed -i -e 's@DEFAULT_JVM_OPTS=\"\"@DEFAULT_JVM_OPTS=\"-Djava.security.egd=file:/dev/urandom -Dfile.encoding=UTF8 -Djava.awt.headless=true -Djava.net.preferIPv4Stack=true -server -Xms512m -Xmx2g -XX:PermSize=512m -XX:SurvivorRatio=2 -XX:+UseParallelGC\" @g' ./$app/bin/$app
+
+./$app/bin/$app

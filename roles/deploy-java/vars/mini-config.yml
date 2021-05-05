@@ -1,0 +1,6 @@
+environ:
+  API_HOST_PORT: 22000
+  API_INNER_PORT: 22015
+  
+  #DB Settings
+  DB_NAME: mini-config

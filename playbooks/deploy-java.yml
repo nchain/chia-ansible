@@ -1,0 +1,5 @@
+- hosts: 
+  - "{{ HOST }}"
+  remote_user: root
+  roles:
+    - deploy-java

@@ -1,0 +1,36 @@
+server {
+    listen	9090;
+
+    server_name  {{ DOMAIN }};
+
+    access_log  /var/log/nginx/access.log main;
+    error_log   /var/log/nginx/error.log  ;
+    root        html;
+    index       index.html index.htm admin.html admin.htm;
+
+    gzip        on;
+    gzip_comp_level     3;
+    gzip_min_length     1024;
+    gzip_types  application/font-woff text/plain application/javascript application/x-javascript text/xml text/css application/xml;
+
+    location ^~ / {
+	root {{ BASE_DIR }}/{{ PROJ }};
+        proxy_read_timeout  90;
+        error_page  404 403 500 502 503 504  /404.html;
+	    try_files $uri $uri/ /index.html;
+    }
+
+    location ~* \.(eot|otf|ttf|woff|svg)$ {
+	root /usr/share/nginx/html/{{ PROJ }};
+        add_header Access-Control-Allow-Origin *;
+    }
+
+    {% if API_HOST and API_PORT %}
+    location /api/ {
+	proxy_pass http://{{ API_HOST }}:{{ API_PORT }}/;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+    {% endif %}
+}

@@ -1,0 +1,20 @@
+- name: "rm project files if exsited already"
+  file:
+    path: "{{ BASE_DIR }}/{{ PROJ }}"
+    state: absent
+
+- name: "rm conf file if exsited already"
+  file:
+    path: "{{ BASE_DIR }}/conf.d/{{ PROJ }}.conf"
+    state: absent
+
+- name: "copy nginx conf"
+  template: src=conf.j2 dest={{ BASE_DIR }}/conf.d/{{ PROJ }}.conf
+
+- name: "alter dir name"
+  shell: mv {{ BASE_DIR }}/dist {{ BASE_DIR }}/{{ PROJ }} && chmod -R 755 {{ BASE_DIR }}/{{ PROJ }}
+
+- name: "reload nginx"
+  shell: nginx -s reload
+
+

@@ -1,0 +1,9 @@
+environ:
+  API_HOST_PORT: 21013
+  API_INNER_PORT: 9000
+
+  DB_NAME: mini-otc
+
+  REDIS_HOST: hk-svc.vmi.ehex.me
+  REDIS_PORT: 6379
+  REDIS_PASSWORD: minizw@123
