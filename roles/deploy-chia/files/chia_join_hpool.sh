@@ -1,0 +1,1 @@
+./hpool/hpool-miner-chia -config ./hpool/config.yaml &

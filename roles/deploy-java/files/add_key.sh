@@ -1,1 +1,0 @@
-chia keys add -f /home/ray/chia.mne
