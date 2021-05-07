@@ -1,3 +1,2 @@
-sh-hstdev ansible_connection=local
-sh-hstprod ansible_ssh_port=9888 ansible_ssh_host=sh-hstprod.vmi.mgps.me ansible_ssh_user=root ansible_ssh_private_key_file=/root/.ssh/id_rsa
-bj-cjq ansible_ssh_port=9888 ansible_ssh_host=cjq.vm.mgps.me ansible_ssh_user=root ansible_ssh_private_key_file=/root/.ssh/id_rsa
+c1 ansible_connection=local
+c2 ansible_ssh_port=22 ansible_ssh_host=c1.mgps.me ansible_ssh_user=ray ansible_ssh_private_key_file=/home/ray/.ssh/id_rsa
