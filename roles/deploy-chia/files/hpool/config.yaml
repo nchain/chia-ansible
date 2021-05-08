@@ -1,8 +1,10 @@
 path:
-minerName:
-apiKey:
+- /media/ray/data1
+- /media/ray/data2
+minerName: MINER
+apiKey: "b65af0c4-a91e-4f5c-be36-0f506625ff48"
 cachePath: ""
-deviceId: ""
+deviceId: "MINER"
 extraParams: {}
 log:
   lv: info
@@ -11,6 +13,5 @@ log:
 url:
   info: ""
   submit: ""
-scanPath: false
+scanPath: true
 scanMinute: 60
-
