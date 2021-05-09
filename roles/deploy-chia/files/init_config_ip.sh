@@ -8,7 +8,7 @@ IPBRST="$a.$b.$c.255"
 DNS1="114.114.114.114"
 DNS2="8.8.8.8"
 
-nmcli con mod "Wired connection 1" \
+sudo nmcli con mod "Wired connection 1" \
   ipv4.addresses "${IP}/24" \
   ipv4.gateway "$IPGW" \
   ipv4.dns "${DNS1},${DNS2}" \
