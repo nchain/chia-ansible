@@ -1,5 +1,4 @@
-- hosts: 
-  - "{{ HOST }}"
-  remote_user: root
+- hosts: *
+  remote_user: ray
   roles:
-    - deploy-java
+    - deploy-chia
