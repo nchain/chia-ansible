@@ -1,0 +1,7 @@
+auto enp6s0
+iface enp6s0 inet static
+    address 10.0.2.11
+    gateway 10.0.2.254
+    netmask 255.255.255.0
+    network 10.0.2.0
+    broadcast 10.0.2.255
