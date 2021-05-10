@@ -2,7 +2,7 @@
 - name: "initialize {{ inventory_hostname }}'s env"
   script: init.sh {{ inventory_hostname }}
 
-- name: "add mne to {{ inventory_hostname }}"
+- name: "add {{ mne }} to {{ inventory_hostname }}"
   command: echo "{{ mne }}" > ~/{{ inventory_hostname }}/{{ inventory_hostname }}.mne
   with_items: groups["{{ inventory_hostname }}"]
 
