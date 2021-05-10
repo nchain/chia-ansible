@@ -3,7 +3,7 @@
   
 - name: "activate chia env"
   shell: |
-    source ~/chia-blockchain/activate
+    . ~/chia-blockchain/activate
 
 - name: "Add API Key to chia env"
   script: chia_add_key.sh {{ inventory_hostname }}
