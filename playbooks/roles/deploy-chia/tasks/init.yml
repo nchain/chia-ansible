@@ -2,11 +2,11 @@
 - name: "initialize {{ inventory_hostname }}'s env"
   script: init.sh {{ inventory_hostname }}
 
-- name: "add {{ hostvars.mne }} to {{ inventory_hostname }}"
-  command: echo "{{ hostvars.mne }}" > ~/{{ inventory_hostname }}/{{ inventory_hostname }}.mne
+- name: "add {{ mne }} to {{ inventory_hostname }}"
+  command: echo "{{ mne }}" > ~/{{ inventory_hostname }}/{{ inventory_hostname }}.mne
 
-- name: "add API key [ {{ hostvars.apikey }} ] to {{ inventory_hostname }}"
-  command: echo "{{ hostvars.apikey }}" > ~/{{ inventory_hostname }}/{{ inventory_hostname }}.apikey
+- name: "add API key [ {{ apikey }} ] to {{ inventory_hostname }}"
+  command: echo "{{ apikey }}" > ~/{{ inventory_hostname }}/{{ inventory_hostname }}.apikey
 
 - name: "Add API Key to chia env"
   script: chia_add_key.sh {{ inventory_hostname }}
