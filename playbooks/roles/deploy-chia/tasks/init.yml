@@ -1,5 +1,5 @@
 # clean docker container
-- name: "initialize env"
+- name: "initialize env [ {{ ansible_host }} ]"
   script: init.sh {{ ansible_host }}
 
 - name: "add mne to {{ ansible_host }}"
