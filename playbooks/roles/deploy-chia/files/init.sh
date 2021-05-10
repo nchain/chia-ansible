@@ -16,3 +16,4 @@ git checkout tags/1.1.5
 sh install.sh
 . ./activate
 chia init
+chia keys add -f ~/${host}/mne

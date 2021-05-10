@@ -1,9 +1,6 @@
 - include_tasks: init.yml
   when: ACTION == "init"
 
-- name: "Add API Key to chia env"
-  script:  . ~/chia-blockchain/activate && chia_add_key.sh {{ inventory_hostname }}
-
 # - name: Include variables
 #   include_vars: "{{ PROJ }}.yml"
 
