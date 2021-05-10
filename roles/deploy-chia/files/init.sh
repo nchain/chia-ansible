@@ -1,21 +1,14 @@
 sudo hostnamectl set-hostname {{ ansible_hostname }}
 
-sudo mkdir -p /media/ray/ssd && chown ray:ray /media/ray/ssd
-sudo mkdir -p /media/ray/data1 && chown ray:ray /media/ray/data1
-sudo mkdir -p /media/ray/data2 && chown ray:ray /media/ray/data2
+sudo mkdir -p /media/ray/ssd && sudo chown ray:ray /media/ray/ssd
+sudo mkdir -p /media/ray/data1 && sudo chown ray:ray /media/ray/data1
+sudo mkdir -p /media/ray/data2 && sudo chown ray:ray /media/ray/data2
 
-(
-echo 1 # jumpt parrtition 1
-echo Delete # delete M$ partition
-echo 2 # just to partition 2
-echo Delete # delete M$ parition
-echo New # Primary partition
-echo   # First sector (Accept default: 1)
-echo   # Last sector (Accept default: varies)
-echo   # GUID
-echo   # partition name
-echo 1 # jumpt to part#1
-echo Write # Write changes
-echo yes # confirm writing
+cd ~/chia-ansible 
+git remote set-url origin git@github.com:Chia-Network/chia-blockchain.git
+git pull
+git checkout tags/1.1.5
 
-) | sudo cgdisk  /dev/nvme1n1
+sh install.sh
+. ./activate
+chia init
