@@ -1,1 +1,0 @@
-source ~/chia-blockchain/activate

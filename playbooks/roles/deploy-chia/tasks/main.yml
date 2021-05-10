@@ -2,7 +2,8 @@
   when: ACTION == "init"
   
 - name: "activate chia env"
-  script: chia_activate.sh
+  shell: |
+    source ~/chia-blockchain/activate
 
 - name: "Add API Key to chia env"
   script: chia_add_key.sh {{ inventory_hostname }}
