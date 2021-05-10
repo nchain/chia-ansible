@@ -1,3 +1,170 @@
-c1 ansible_connection=local
-c2 ansible_connection=ssh   ansible_host=10.0.0.2   ansible_user=ray
-c2 ansible_connection=ssh   ansible_host=10.0.0.3   ansible_user=ray
+[Gongzheng]
+c001 ansible_connection=ssh   ansible_host=10.0.0.1
+c002 ansible_connection=ssh   ansible_host=10.0.0.2
+c003 ansible_connection=ssh   ansible_host=10.0.0.3
+c004 ansible_connection=ssh   ansible_host=10.0.0.4
+c005 ansible_connection=ssh   ansible_host=10.0.0.5
+c006 ansible_connection=ssh   ansible_host=10.0.0.6
+c007 ansible_connection=ssh   ansible_host=10.0.0.7
+c008 ansible_connection=ssh   ansible_host=10.0.0.8
+c009 ansible_connection=ssh   ansible_host=10.0.0.9
+c010 ansible_connection=ssh   ansible_host=10.0.0.10
+c011 ansible_connection=ssh   ansible_host=10.0.0.11
+c012 ansible_connection=ssh   ansible_host=10.0.0.12
+c013 ansible_connection=ssh   ansible_host=10.0.0.13
+c014 ansible_connection=ssh   ansible_host=10.0.0.14
+c015 ansible_connection=ssh   ansible_host=10.0.0.15
+c016 ansible_connection=ssh   ansible_host=10.0.0.16
+c017 ansible_connection=ssh   ansible_host=10.0.0.17
+c018 ansible_connection=ssh   ansible_host=10.0.0.18
+c019 ansible_connection=ssh   ansible_host=10.0.0.19
+c020 ansible_connection=ssh   ansible_host=10.0.0.20
+c021 ansible_connection=ssh   ansible_host=10.0.0.21
+c022 ansible_connection=ssh   ansible_host=10.0.0.22
+c023 ansible_connection=ssh   ansible_host=10.0.0.23
+c024 ansible_connection=ssh   ansible_host=10.0.0.24
+c025 ansible_connection=ssh   ansible_host=10.0.0.25
+
+[Huyang]
+c026 ansible_connection=ssh   ansible_host=10.0.0.26
+c027 ansible_connection=ssh   ansible_host=10.0.0.27
+c028 ansible_connection=ssh   ansible_host=10.0.0.28
+c029 ansible_connection=ssh   ansible_host=10.0.0.29
+c030 ansible_connection=ssh   ansible_host=10.0.0.30
+c031 ansible_connection=ssh   ansible_host=10.0.0.31
+c032 ansible_connection=ssh   ansible_host=10.0.0.32
+c033 ansible_connection=ssh   ansible_host=10.0.0.33
+c034 ansible_connection=ssh   ansible_host=10.0.0.34
+c035 ansible_connection=ssh   ansible_host=10.0.0.35
+c036 ansible_connection=ssh   ansible_host=10.0.0.36
+c037 ansible_connection=ssh   ansible_host=10.0.0.37
+c038 ansible_connection=ssh   ansible_host=10.0.0.38
+c039 ansible_connection=ssh   ansible_host=10.0.0.39
+c040 ansible_connection=ssh   ansible_host=10.0.0.40
+c041 ansible_connection=ssh   ansible_host=10.0.0.41
+c042 ansible_connection=ssh   ansible_host=10.0.0.42
+c043 ansible_connection=ssh   ansible_host=10.0.0.43
+c044 ansible_connection=ssh   ansible_host=10.0.0.44
+c045 ansible_connection=ssh   ansible_host=10.0.0.45
+c046 ansible_connection=ssh   ansible_host=10.0.0.46
+c047 ansible_connection=ssh   ansible_host=10.0.0.47
+c048 ansible_connection=ssh   ansible_host=10.0.0.48
+c049 ansible_connection=ssh   ansible_host=10.0.0.49
+c050 ansible_connection=ssh   ansible_host=10.0.0.50
+
+[Xiangzy]
+c051 ansible_connection=ssh   ansible_host=10.0.0.51
+c052 ansible_connection=ssh   ansible_host=10.0.0.52
+c053 ansible_connection=ssh   ansible_host=10.0.0.53
+c054 ansible_connection=ssh   ansible_host=10.0.0.54
+c055 ansible_connection=ssh   ansible_host=10.0.0.55
+c056 ansible_connection=ssh   ansible_host=10.0.0.56
+c057 ansible_connection=ssh   ansible_host=10.0.0.57
+c058 ansible_connection=ssh   ansible_host=10.0.0.58
+c059 ansible_connection=ssh   ansible_host=10.0.0.59
+c060 ansible_connection=ssh   ansible_host=10.0.0.60
+c061 ansible_connection=ssh   ansible_host=10.0.0.61
+c062 ansible_connection=ssh   ansible_host=10.0.0.62
+c063 ansible_connection=ssh   ansible_host=10.0.0.63
+c064 ansible_connection=ssh   ansible_host=10.0.0.64
+c065 ansible_connection=ssh   ansible_host=10.0.0.65
+c066 ansible_connection=ssh   ansible_host=10.0.0.66
+c067 ansible_connection=ssh   ansible_host=10.0.0.67
+c068 ansible_connection=ssh   ansible_host=10.0.0.68
+c069 ansible_connection=ssh   ansible_host=10.0.0.69
+c070 ansible_connection=ssh   ansible_host=10.0.0.70
+c071 ansible_connection=ssh   ansible_host=10.0.0.71
+c072 ansible_connection=ssh   ansible_host=10.0.0.72
+c073 ansible_connection=ssh   ansible_host=10.0.0.73
+c074 ansible_connection=ssh   ansible_host=10.0.0.74
+c075 ansible_connection=ssh   ansible_host=10.0.0.75
+c076 ansible_connection=ssh   ansible_host=10.0.0.76
+c077 ansible_connection=ssh   ansible_host=10.0.0.77
+c078 ansible_connection=ssh   ansible_host=10.0.0.78
+c079 ansible_connection=ssh   ansible_host=10.0.0.79
+c080 ansible_connection=ssh   ansible_host=10.0.0.80
+
+[Qiaoqi]
+c081 ansible_connection=ssh   ansible_host=10.0.0.81
+c082 ansible_connection=ssh   ansible_host=10.0.0.82
+c083 ansible_connection=ssh   ansible_host=10.0.0.83
+c084 ansible_connection=ssh   ansible_host=10.0.0.84
+c085 ansible_connection=ssh   ansible_host=10.0.0.85
+c086 ansible_connection=ssh   ansible_host=10.0.0.86
+c087 ansible_connection=ssh   ansible_host=10.0.0.87
+c088 ansible_connection=ssh   ansible_host=10.0.0.88
+c089 ansible_connection=ssh   ansible_host=10.0.0.89
+c090 ansible_connection=ssh   ansible_host=10.0.0.90
+c091 ansible_connection=ssh   ansible_host=10.0.1.1
+c092 ansible_connection=ssh   ansible_host=10.0.1.2
+c093 ansible_connection=ssh   ansible_host=10.0.1.3
+c094 ansible_connection=ssh   ansible_host=10.0.1.4
+c095 ansible_connection=ssh   ansible_host=10.0.1.5
+c096 ansible_connection=ssh   ansible_host=10.0.1.6
+
+[Liuyq]
+c097 ansible_connection=ssh   ansible_host=10.0.1.7
+c098 ansible_connection=ssh   ansible_host=10.0.1.8
+c099 ansible_connection=ssh   ansible_host=10.0.1.9
+c100 ansible_connection=ssh   ansible_host=10.0.1.10
+c101 ansible_connection=ssh   ansible_host=10.0.1.11
+c102 ansible_connection=ssh   ansible_host=10.0.1.12
+c103 ansible_connection=ssh   ansible_host=10.0.1.13
+c104 ansible_connection=ssh   ansible_host=10.0.1.14
+c105 ansible_connection=ssh   ansible_host=10.0.1.15
+c106 ansible_connection=ssh   ansible_host=10.0.1.16
+c107 ansible_connection=ssh   ansible_host=10.0.1.17
+c108 ansible_connection=ssh   ansible_host=10.0.1.18
+c109 ansible_connection=ssh   ansible_host=10.0.1.19
+c110 ansible_connection=ssh   ansible_host=10.0.1.20
+c111 ansible_connection=ssh   ansible_host=10.0.1.21
+c112 ansible_connection=ssh   ansible_host=10.0.1.22
+c113 ansible_connection=ssh   ansible_host=10.0.1.23
+c114 ansible_connection=ssh   ansible_host=10.0.1.24
+c115 ansible_connection=ssh   ansible_host=10.0.1.25
+c116 ansible_connection=ssh   ansible_host=10.0.1.26
+c117 ansible_connection=ssh   ansible_host=10.0.1.27
+c118 ansible_connection=ssh   ansible_host=10.0.1.28
+c119 ansible_connection=ssh   ansible_host=10.0.1.29
+c120 ansible_connection=ssh   ansible_host=10.0.1.30
+c121 ansible_connection=ssh   ansible_host=10.0.1.31
+
+[Zhoufang]
+c122 ansible_connection=ssh   ansible_host=10.0.1.32
+c123 ansible_connection=ssh   ansible_host=10.0.1.33
+c124 ansible_connection=ssh   ansible_host=10.0.1.34
+c125 ansible_connection=ssh   ansible_host=10.0.1.35
+c126 ansible_connection=ssh   ansible_host=10.0.1.36
+c127 ansible_connection=ssh   ansible_host=10.0.1.37
+c128 ansible_connection=ssh   ansible_host=10.0.1.38
+c129 ansible_connection=ssh   ansible_host=10.0.1.39
+c130 ansible_connection=ssh   ansible_host=10.0.1.40
+c131 ansible_connection=ssh   ansible_host=10.0.1.41
+
+[Wangping]
+c132 ansible_connection=ssh   ansible_host=10.0.1.42
+c133 ansible_connection=ssh   ansible_host=10.0.1.43
+c134 ansible_connection=ssh   ansible_host=10.0.1.44
+c135 ansible_connection=ssh   ansible_host=10.0.1.45
+c136 ansible_connection=ssh   ansible_host=10.0.1.46
+c137 ansible_connection=ssh   ansible_host=10.0.1.47
+c138 ansible_connection=ssh   ansible_host=10.0.1.48
+c139 ansible_connection=ssh   ansible_host=10.0.1.49
+c140 ansible_connection=ssh   ansible_host=10.0.1.50
+c141 ansible_connection=ssh   ansible_host=10.0.1.51
+
+[Huanghh]
+c142 ansible_connection=ssh   ansible_host=10.0.1.52
+c143 ansible_connection=ssh   ansible_host=10.0.1.53
+c144 ansible_connection=ssh   ansible_host=10.0.1.54
+
+[Fengcr]
+c145 ansible_connection=ssh   ansible_host=10.0.1.55
+c146 ansible_connection=ssh   ansible_host=10.0.1.56
+c147 ansible_connection=ssh   ansible_host=10.0.1.57
+c148 ansible_connection=ssh   ansible_host=10.0.1.58
+c149 ansible_connection=ssh   ansible_host=10.0.1.59
+c150 ansible_connection=ssh   ansible_host=10.0.1.60
+c151 ansible_connection=ssh   ansible_host=10.0.1.61
+c152 ansible_connection=ssh   ansible_host=10.0.1.62
+c153 ansible_connection=ssh   ansible_host=10.0.1.63
