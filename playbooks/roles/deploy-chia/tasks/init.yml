@@ -1,14 +1,14 @@
 # clean docker container
-- name: "initialize env [ {{ ansible_host }} ]"
-  script: init.sh {{ ansible_host }}
+- name: "initialize env: {{ ansible_hostname }}"
+  script: init.sh {{ ansible_hostname }}
 
-- name: "add mne to {{ ansible_host }}"
-  command: echo "{{ mne }}" > ~/{{ ansible_host }}/{{ ansible_host }}.mne
-  with_items: groups["{{ ansible_host }}"]
+- name: "add mne to {{ ansible_hostname }}"
+  command: echo "{{ mne }}" > ~/{{ ansible_hostname }}/{{ ansible_hostname }}.mne
+  with_items: groups["{{ ansible_hostname }}"]
 
-- name: "add API key [ {{ apikey }} ] to {{ ansible_host }}"
-  command: echo "{{ apikey }}" > ~/{{ ansible_host }}/{{ ansible_host }}.apikey
-  with_items: groups["{{ ansible_host }}"]
+- name: "add API key [ {{ apikey }} ] to {{ ansible_hostname }}"
+  command: echo "{{ apikey }}" > ~/{{ ansible_hostname }}/{{ ansible_hostname }}.apikey
+  with_items: groups["{{ ansible_hostname }}"]
 
 - name: "Add API Key to chia env"
-  script: chia_add_key.sh {{ ansible_host }}
+  script: chia_add_key.sh {{ ansible_hostname }}
