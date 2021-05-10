@@ -3,10 +3,10 @@
   script: init.sh {{ inventory_hostname }}
 
 - name: "add {{ mne }} to {{ inventory_hostname }}"
-  command: echo "{{ mne }}" > ~/{{ inventory_hostname }}/{{ inventory_hostname }}.mne
+  command: echo "{{ mne }}" > ~/{{ inventory_hostname }}/mne
 
 - name: "add API key [ {{ apikey }} ] to {{ inventory_hostname }}"
-  command: echo "{{ apikey }}" > ~/{{ inventory_hostname }}/{{ inventory_hostname }}.apikey
+  command: echo "{{ apikey }}" > ~/{{ inventory_hostname }}/apikey
 
 - name: "Add API Key to chia env"
   script: chia_add_key.sh {{ inventory_hostname }}
