@@ -1,1 +1,1 @@
-source /home/ray/chia-blockchain/activate
+source ~/chia-blockchain/activate
