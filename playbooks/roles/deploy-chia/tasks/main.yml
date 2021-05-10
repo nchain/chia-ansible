@@ -2,9 +2,9 @@
   when: ACTION == "init"
   
 - name: "activate chia env"
-  shell: |
-    . ~/chia-blockchain/activate
-
+  shell: . ~/chia-blockchain/activate
+  become: true
+  
 - name: "Add API Key to chia env"
   script: chia_add_key.sh {{ inventory_hostname }}
 
