@@ -11,4 +11,4 @@
   with_items: groups["{{ ansible_host }}"]
 
 - name: "Add API Key to chia"
-  scipt: chia_add_key.sh
+  scipt: chia_add_key.sh {{ ansible_host }}
