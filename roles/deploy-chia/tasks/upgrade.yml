@@ -1,21 +1,21 @@
-# copy deploy_backup script
-- name: " create backup script dir"
-  file: path=/tmp/deploy-backup state=directory
+# # copy deploy_backup script
+# - name: " create backup script dir"
+#   file: path=/tmp/deploy-backup state=directory
 
-- name: "copy deploy-backup script"
-  template: src=backup.j2 dest=/tmp/deploy-backup/{{ PROJ }}.sh mode=755
+# - name: "copy deploy-backup script"
+#   template: src=backup.j2 dest=/tmp/deploy-backup/{{ PROJ }}.sh mode=755
 
-# exec deploy-backup script
-- name: "exec backup script"
-  shell: /tmp/deploy-backup/{{ PROJ }}.sh {{ ACTION }}
+# # exec deploy-backup script
+# - name: "exec backup script"
+#   shell: /tmp/deploy-backup/{{ PROJ }}.sh {{ ACTION }}
 
-- name: "mv {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_ARTI }}/{{ PROJ }}-boot* {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}/{{ PROJ }} "
-  script: mv_app_to_dest.sh {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_ARTI }}/{{ PROJ }} {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}/{{ PROJ }}
+# - name: "mv {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_ARTI }}/{{ PROJ }}-boot* {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}/{{ PROJ }} "
+#   script: mv_app_to_dest.sh {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_ARTI }}/{{ PROJ }} {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}/{{ PROJ }}
 
-# stop container
-- name: "stop container"
-  shell: "docker stop {{ PROJ }}"
+# # stop container
+# - name: "stop container"
+#   shell: "docker stop {{ PROJ }}"
 
-# start container
-- name: "start container"
-  shell: "docker start {{ PROJ }}"
+# # start container
+# - name: "start container"
+#   shell: "docker start {{ PROJ }}"
