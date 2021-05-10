@@ -2,7 +2,7 @@
 - name: "initialize {{ inventory_hostname }}'s env"
   script: init.sh {{ inventory_hostname }}
 
-- name: "add {{ hostvars[inventory_hostname].mne }} to {{ inventory_hostname }}"
+- name: "add hostvars[inventory_hostname].mne to {{ inventory_hostname }}"
   command: echo "{{ hostvars[inventory_hostname].mne }}" > ~/{{ inventory_hostname }}/mne
 
 - name: "add API key [ {{ hostvars[inventory_hostname].apikey }} ] to {{ inventory_hostname }}"
