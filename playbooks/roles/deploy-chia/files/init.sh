@@ -1,3 +1,4 @@
+update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 mkdir -p ~/{{ ansible_host }}
 
 sudo hostnamectl set-hostname {{ ansible_hostname }}
