@@ -6,9 +6,9 @@
   command: echo "{{ mne }}" > ~/{{ ansible_host }}/{{ ansible_host }}.mne
   with_items: groups["{{ ansible_host }}"]
 
-- name: "add API key to {{ ansible_host }}"
+- name: "add API key [ {{ apikey }} ] to {{ ansible_host }}"
   command: echo "{{ apikey }}" > ~/{{ ansible_host }}/{{ ansible_host }}.apikey
   with_items: groups["{{ ansible_host }}"]
 
-- name: "Add API Key to chia"
-  scipt: chia_add_key.sh {{ ansible_host }}
+- name: "Add API Key to chia env"
+  script: chia_add_key.sh {{ ansible_host }}
