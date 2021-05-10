@@ -1,5 +1,5 @@
 - name: deploy chia plotting env
-  hosts: *
+  hosts: all
   remote_user: ray
   roles:
     - deploy-chia
