@@ -1,1 +1,1 @@
-chia keys add -f /home/ray/mnes/{{ ansible_host }}.mne
+chia keys add -f /home/ray/{{ ansible_host }}/{{ ansible_host }}.mne

@@ -1,3 +1,5 @@
+mkdir -p ~/{{ ansible_host }}
+
 sudo hostnamectl set-hostname {{ ansible_hostname }}
 
 sudo mkdir -p /media/ray/ssd && sudo chown ray:ray /media/ray/ssd
@@ -10,9 +12,3 @@ git pull
 git checkout tags/1.1.5
 
 sh install.sh
-. ./activate
-chia init
-
-mkdir -p ~/mnes
-
-chia keys add -f /home/ray/mnes/{{ ansible_host }}.mne
