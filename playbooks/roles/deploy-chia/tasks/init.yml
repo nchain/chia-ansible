@@ -7,6 +7,3 @@
 
 - name: "add API key [ {{ hostvars[inventory_hostname].apikey }} ] to {{ inventory_hostname }}"
   command: echo "{{ hostvars[inventory_hostname].apikey }}" > ~/{{ inventory_hostname }}/apikey
-
-- name: "Add API Key to chia env"
-  script: chia_add_key.sh {{ inventory_hostname }}
