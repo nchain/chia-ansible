@@ -1,5 +1,5 @@
 # clean docker container
-- name: "initialize env_{{ inventory_hostname }}"
+- name: "initialize { inventory_hostname }} env"
   script: init.sh {{ inventory_hostname }}
 
 - name: "add mne to {{ inventory_hostname }}"
