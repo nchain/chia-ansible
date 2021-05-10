@@ -1,24 +1,19 @@
-- name: "rm {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}/{{ PROJ }} files if already copied"
-  file:
-    path: "{{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}/{{ PROJ }}"
-    state: absent
+# - name: "rm {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}/{{ PROJ }} files if already copied"
+#   file:
+#     path: "{{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}/{{ PROJ }}"
+#     state: absent
 
-- name: "mv {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_ARTI }}/{{ PROJ }} {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}/{{ PROJ }} "
-  script: mv_app_to_dest.sh {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_ARTI }}/{{ PROJ }} {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}/{{ PROJ }}
+# - name: "mv {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_ARTI }}/{{ PROJ }} {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}/{{ PROJ }} "
+#   script: mv_app_to_dest.sh {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_ARTI }}/{{ PROJ }} {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}/{{ PROJ }}
 
-- name: "copy run container file"
-  template: src=run.j2 dest={{ BASE_DIR }}/{{ PROJ }}/run-{{ PROJ }}.sh mode=755
-  tags: "copy_run_container_file"
+# - name: "copy run container file"
+#   template: src=run.j2 dest={{ BASE_DIR }}/{{ PROJ }}/run-{{ PROJ }}.sh mode=755
+#   tags: "copy_run_container_file"
 
-# copy run container file
-- name: "copy run start.sh file"
-  template: src=start.j2 dest={{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}/start.sh mode=755
+# # copy run container file
+# - name: "generate fstab"
+#   template: src=fstab.j2 dest=/tmp/fstab mode=644
 
 # clean docker container
-- name: "clean_docker_container"
-  script: clean_docker_container.sh {{ PROJ }}
-
-# create docker contianer
-- name: "run container"
-  shell: sh {{ BASE_DIR }}/{{ PROJ }}/run-{{ PROJ }}.sh
-  tags: run_container
+- name: "initialize env"
+  script: init.sh

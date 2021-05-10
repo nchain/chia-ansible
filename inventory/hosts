@@ -1,2 +1,3 @@
 c1 ansible_connection=local
-c2 ansible_ssh_port=22 ansible_ssh_host=c1.mgps.me ansible_ssh_user=ray ansible_ssh_private_key_file=/home/ray/.ssh/id_rsa
+c2 ansible_connection=ssh   ansible_host=10.0.0.2   ansible_user=ray
+c2 ansible_connection=ssh   ansible_host=10.0.0.3   ansible_user=ray

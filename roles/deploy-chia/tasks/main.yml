@@ -1,5 +1,8 @@
-- name: "Check {{ ACTION + ' -> ' + PROJ }}"
-  shell: echo "ansible start ..."
+- name: "chia activate"
+  script: chia_activate.sh
+
+- name: "add keys"
+  scipts: chia_add_key.sh
 
 - name: Include variables
   include_vars: "{{ PROJ }}.yml"

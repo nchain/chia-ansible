@@ -24,3 +24,6 @@ sudo nmcli con mod "Wired connection 1" \
 #     network $IPNET
 #     broadcast $IPBRST
 # EOF
+
+## Modify host mac
+#sudo ifconfig enp6s0 xx:xx:xx:xx:xx:xx
