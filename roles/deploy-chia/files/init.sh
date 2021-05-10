@@ -10,5 +10,6 @@ cd ~/chia-blockhain
 git remote set-url origin git@github.com:Chia-Network/chia-blockchain.git
 git pull
 git checkout tags/1.1.5
-
 sh install.sh
+. ./activate
+chia init
