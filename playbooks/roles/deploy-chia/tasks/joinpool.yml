@@ -1,8 +1,5 @@
-- name: "generate hpool config.yml"
-  template: src=hpool_config.j2 dest=~/{{ inventory_hostname }}/hpool_conf.yml
-
 # join HPool
 - name: "join hpool to mine XCH :-)"
-  shell: "(/home/ray/chia-ansible/roles/deploy-chia/files/hpool/hpool-miner-chia -config {{ inventory_hostname }}/hpool_conf.yml >/dev/null 2>&1 &)"
+  shell: "(sh ~/{{ inventory_hostname }}/chia_join_hpool.sh -config {{ inventory_hostname }}/hpool_conf.yml &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0

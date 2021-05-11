@@ -15,5 +15,8 @@
 - name: "copy chia_join_hpool.sh to ~/{{ inventory_hostname }} "
   copy: src=chia_join_hpool.sh dest=~/{{ inventory_hostname }} mode=755 force=no
 
+- name: "generate hpool config.yml"
+  template: src=hpool_config.j2 dest=~/{{ inventory_hostname }}/hpool_conf.yml
+  
 - name: "initialize {{ inventory_hostname }}'s env"
   script: init.sh {{ inventory_hostname }} {{ CHIA_RELEASE_TAG }}
