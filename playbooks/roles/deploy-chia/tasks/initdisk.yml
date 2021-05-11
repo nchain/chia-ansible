@@ -1,3 +1,7 @@
+- name: create data mount points
+  shell: mkdir -p /media/ray/ssd && chown ray. /media/ray/ssd
+  become: true
+  
 - name: create ext4 for ssd
   community.general.filesystem:
     fstype: ext4
@@ -5,6 +9,14 @@
     # state: absent
     force: yes
   become: true
+  when: mount_src not in mounted_devices
+- name: Mount ssd
+  mount:
+    path: /dev/ray/ssd
+    src: /dev/nvme1n1
+    fstype: ext4
+    state: mounted
+  when: mount_src not in mounted_devices
 
 - name: create ext4 for sda
   community.general.filesystem:
@@ -15,6 +27,13 @@
   become: true
   async: 600               # 10 mins
   poll: 0
+- name: Mount sda - data1
+  mount:
+    path: /dev/ray/data1
+    src: /dev/sda
+    fstype: ext4
+    state: mounted
+  when: mount_src not in mounted_devices
 
 - name: create ext4 for sdb
   community.general.filesystem:
@@ -24,9 +43,10 @@
   become: true
   async: 600               # 10 mins
   poll: 0
-
-- name: create data mount points
-  shell: mkdir -p /media/ray/ssd && chown ray. /media/ray/ssd
-  become: true
-  async: 600               # 10 mins
-  poll: 0
+- name: Mount sdb - data2
+  mount:
+    path: /dev/ray/data2
+    src: /dev/sdb
+    fstype: ext4
+    state: mounted
+  when: mount_src not in mounted_devices
