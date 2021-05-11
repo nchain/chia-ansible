@@ -9,6 +9,3 @@
 
 - include_tasks: joinpool.yml
   when: ACTION == "joinpool"
-
-- include_tasks: upgrade.yml
-  when: ACTION == "up" or ACTION == "upgrade" 
