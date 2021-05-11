@@ -4,18 +4,22 @@
     dev: /dev/nvme1n1
     opts: -cc
     force: yes
+  become: true
 
 - name: create ext4 for sda
   filesystem:
     fstype: ext4
     dev: /dev/sda
     opts: -cc
+  become: true
 
 - name: create ext4 for sdb
   filesystem:
     fstype: ext4
     dev: /dev/sdb
     opts: -cc
+  become: true
 
 - name: create data mount points
-  shell: sudo mkdir -p /media/ray/ssd && sudo chown ray. /media/ray/ssd
+  shell: mkdir -p /media/ray/ssd && chown ray. /media/ray/ssd
+  become: true
