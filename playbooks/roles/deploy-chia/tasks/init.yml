@@ -9,5 +9,11 @@
     dest: ~/{{ inventory_hostname }}/apikey
     content: "{{ hostvars[inventory_hostname].apikey }}"
 
+- name: "copy chia_plot_data.sh to ~/{{ inventory_hostname }} "
+  copy: src=chia_plot_data dest=~/{{ inventory_hostname }} mode=755 force=no
+
+- name: "copy chia_join_hpool.sh to ~/{{ inventory_hostname }} "
+  copy: src=chia_join_hpool dest=~/{{ inventory_hostname }} mode=755 force=no
+
 - name: "initialize {{ inventory_hostname }}'s env"
   script: init.sh {{ inventory_hostname }} {{ CHIA_RELEASE_TAG }}
