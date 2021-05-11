@@ -6,7 +6,7 @@
   set_fact:
     mounted_devices: "{{ ansible_mounts|json_query('[].device') }}"
 
-- name: create ext4 for ssd ({{ mount_src_ssd }})
+- name: create ext4 for ssd ({{ mount_src_ssd }}) of mounted ({{ mounted_devices }})
   community.general.filesystem:
     fstype: ext4
     dev: "{{ mount_src_ssd }}"
