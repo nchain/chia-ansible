@@ -1,26 +1,26 @@
 
 - name: Plot data1 :#1
-  shell: "(sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  shell: "(sh ./chia_plot_data.sh data1 {{ hostvars[inventory_hostname].plots }} >/dev/null 2>&1 &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
 
 - name: Plot data1 :#2
-  shell: "(sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  shell: "(sh ./chia_plot_data.sh data1 {{ hostvars[inventory_hostname].plots }} >/dev/null 2>&1 &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
 
 - name: Plot data1 :#3
-  shell: "(sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  shell: "(sh ./chia_plot_data.sh data1 {{ hostvars[inventory_hostname].plots }} >/dev/null 2>&1 &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
 
 - name: Plot data2 :#1
-  shell: "(sh ./chia_plot_data.sh data2 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  shell: "(sh ./chia_plot_data.sh data2 {{ hostvars[inventory_hostname].plots }} >/dev/null 2>&1 &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
 
 - name: Plot data2 :#2
-  shell: "(sh ./chia_plot_data.sh data2 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  shell: "(sh ./chia_plot_data.sh data2 {{ hostvars[inventory_hostname].plots }} >/dev/null 2>&1 &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
 
@@ -30,11 +30,11 @@
   poll: 0
 
 - name: Plot data2 :#4
-  shell: "(sh ./chia_plot_data.sh data2 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  shell: "(sh ./chia_plot_data.sh data2 {{ hostvars[inventory_hostname].plots }} >/dev/null 2>&1 &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
 
 - name: Plot data2
-  shell: "(sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  shell: "(sh ./chia_plot_data.sh data1 {{ hostvars[inventory_hostname].plots }} >/dev/null 2>&1 &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
