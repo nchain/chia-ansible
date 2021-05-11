@@ -1,45 +1,11 @@
+- include_tasks: initdisk.yml
+  when: ACTION == "initdisk"
+  
 - include_tasks: init.yml
   when: ACTION == "init"
 
-- name: Plot data1 :#1
-  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
-  async: 10
-  poll: 0
-
-- name: Plot data1 :#2
-  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
-  async: 10
-  poll: 0
-
-- name: Plot data1 :#3
-  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
-  async: 10
-  poll: 0
-
-- name: Plot data2 :#1
-  shell: "sh ./chia_plot_data.sh data2 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
-  async: 10
-  poll: 0
-
-- name: Plot data2 :#2
-  shell: "sh ./chia_plot_data.sh data2 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
-  async: 10
-  poll: 0
-
-- name: Plot data2 :#3
-  shell: "sh ./chia_plot_data.sh data2 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
-  async: 10
-  poll: 0
-
-- name: Plot data2 :#4
-  shell: "sh ./chia_plot_data.sh data2 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
-  async: 10
-  poll: 0
-
-- name: Plot data2
-  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
-  async: 10
-  poll: 0
+- include_tasks: plot.yml
+  when: ACTION == "plot"
 
 - include_tasks: upgrade.yml
   when: ACTION == "up" or ACTION == "upgrade" 
