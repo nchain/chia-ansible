@@ -4,31 +4,31 @@
   poll: 0
 
 - name: Plot data1 :#2
-  script: "(sh ~/chia_plot_data.sh data1 {{ hostvars[inventory_hostname].plots }} &)"
+  shell: "(sh ~/{{ inventory_hostname }}/chia_plot_data.sh data1 {{ hostvars[inventory_hostname].plots }} &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
 
 - name: Plot data1 :#3
-  script: "(sh ~/chia_plot_data.sh data1 {{ hostvars[inventory_hostname].plots }} &)"
+  shell: "(sh ~/{{ inventory_hostname }}/chia_plot_data.sh data1 {{ hostvars[inventory_hostname].plots }} &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
 
 - name: Plot data2 :#1
-  script: "(sh ~/chia_plot_data.sh data2 {{ hostvars[inventory_hostname].plots }} &)"
+  shell: "(sh ~/{{ inventory_hostname }}/chia_plot_data.sh data2 {{ hostvars[inventory_hostname].plots }} &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
 
 - name: Plot data2 :#2
-  script: "(sh ~/chia_plot_data.sh data2 {{ hostvars[inventory_hostname].plots }} &)"
+  shell: "(sh ~/chia_plot_data.sh data2 {{ hostvars[inventory_hostname].plots }} &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
 
 - name: Plot data2 :#3
-  script: "(sh ~/chia_plot_data.sh data2 {{ hostvars[inventory_hostname].plots }} &)"
+  shell: "(sh ~/{{ inventory_hostname }}/chia_plot_data.sh data2 {{ hostvars[inventory_hostname].plots }} &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
 
 - name: Plot data2 :#4
-  script: "(sh ~/chia_plot_data.sh data1 {{ hostvars[inventory_hostname].plots }} &)"
+  shell: "(sh ~/{{ inventory_hostname }}/chia_plot_data.sh data1 {{ hostvars[inventory_hostname].plots }} &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
