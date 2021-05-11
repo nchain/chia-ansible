@@ -3,20 +3,22 @@
   copy: 
     dest: ~/{{ inventory_hostname }}/mne
     content: "{{ hostvars[inventory_hostname].mne }}"
+    remote_src: yes
 
 - name: "add API key [ {{ hostvars[inventory_hostname].apikey }} ] to {{ inventory_hostname }}"
   copy:
     dest: ~/{{ inventory_hostname }}/apikey
     content: "{{ hostvars[inventory_hostname].apikey }}"
+    remote_src: yes
 
 - name: "copy chia_plot_data.sh to ~/{{ inventory_hostname }} "
-  copy: src=chia_plot_data.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
+  copy: src=chia_plot_data.sh dest=~/{{ inventory_hostname }} mode=755 force=yes remote_src: yes
 
 - name: "copy chia_join_hpool.sh to ~/{{ inventory_hostname }} "
-  copy: src=chia_join_hpool.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
+  copy: src=chia_join_hpool.sh dest=~/{{ inventory_hostname }} mode=755 force=yes remote_src: yes
 
 - name: "generate hpool config.yml"
-  template: src=hpool_config.j2 dest=~/{{ inventory_hostname }}/hpool_conf.yml
+  template: src=hpool_config.j2 dest=~/{{ inventory_hostname }}/hpool_conf.yml remote_src: yes
   
 - name: "initialize {{ inventory_hostname }}'s env"
   script: init.sh {{ inventory_hostname }} {{ CHIA_RELEASE_TAG }}
