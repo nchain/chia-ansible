@@ -2,6 +2,7 @@
   filesystem:
     fstype: ext4
     dev: /dev/nvme1n1
+    state: absent
     force: yes
   become: true
 
@@ -9,6 +10,8 @@
   filesystem:
     fstype: ext4
     dev: /dev/sda
+    state: absent
+    force: yes
   become: true
   async: 600               # 10 mins
   poll: 0
@@ -17,6 +20,7 @@
   filesystem:
     fstype: ext4
     dev: /dev/sdb
+    state: absent
   become: true
   async: 600               # 10 mins
   poll: 0
