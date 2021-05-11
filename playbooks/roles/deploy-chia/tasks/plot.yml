@@ -29,11 +29,6 @@
   poll: 0
 
 - name: Plot data2 :#4
-  script: chia_plot_data.sh data2 {{ hostvars[inventory_hostname].plots }}
-  async: 2592000               # 60*60*24*30 – 1 month
-  poll: 0
-
-- name: Plot data2
   script: chia_plot_data.sh data1 {{ hostvars[inventory_hostname].plots }}
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
