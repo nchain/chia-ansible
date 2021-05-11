@@ -1,5 +1,4 @@
 - name: check reachable hosts via ping
-  hosts: all
   gather_facts: no
   tasks:
     - command: ping -c1 {{ ansible_host }}
@@ -8,12 +7,11 @@
       ignore_errors: yes
     - group_by: key=reachable
       when: ping_result|success
-  when: ACTION == 'checkhost' and PARAM == "ping"
+  when: PARAM == "ping"
 
 - name: check reachable hosts via ssh port
-  hosts: all
   gather_facts: no
   tasks:
     - wait_for: host=remote.host port=22 timeout=1
     - debug: msg=ok
-  when: ACTION == 'checkhost' and PARAM == "port"
+  when: PARAM == "port"
