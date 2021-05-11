@@ -12,8 +12,8 @@
     dev: "{{ mount_src_ssd }}"
     # state: absent
     force: yes
-  become: true
   when: mount_src_ssd not in mounted_devices
+  become: true
 - name: Mount ssd
   mount:
     path: /dev/ray/ssd
@@ -32,6 +32,7 @@
   become: true
   async: 600               # 10 mins
   poll: 0
+  when: mount_src_data1 not in mounted_devices
 - name: Mount sda - data1
   mount:
     path: /dev/ray/data1
@@ -49,6 +50,7 @@
   become: true
   async: 600               # 10 mins
   poll: 0
+  when: mount_src_data2 not in mounted_devices
 - name: Mount sdb - data2
   mount:
     path: /dev/ray/data2
