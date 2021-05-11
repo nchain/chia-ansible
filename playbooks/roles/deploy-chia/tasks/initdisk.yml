@@ -5,23 +5,23 @@
 - name: create ext4 for ssd
   community.general.filesystem:
     fstype: ext4
-    dev: /dev/nvme1n1
+    dev: {{ mount_src_ssd }}
     # state: absent
     force: yes
   become: true
-  when: mount_src not in mounted_devices
+  when: mount_src_ssd not in mounted_devices
 - name: Mount ssd
   mount:
     path: /dev/ray/ssd
-    src: /dev/nvme1n1
+    src: {{ mount_src_ssd }}
     fstype: ext4
     state: mounted
-  when: mount_src not in mounted_devices
+  when: mount_src_ssd not in mounted_devices
 
 - name: create ext4 for sda
   community.general.filesystem:
     fstype: ext4
-    dev: /dev/sda
+    dev: {{ mount_src_data1 }}
     # state: absent
     force: yes
   become: true
@@ -30,15 +30,15 @@
 - name: Mount sda - data1
   mount:
     path: /dev/ray/data1
-    src: /dev/sda
+    src: {{ mount_src_data1 }}
     fstype: ext4
     state: mounted
-  when: mount_src not in mounted_devices
+  when: mount_src_data1 not in mounted_devices
 
 - name: create ext4 for sdb
   community.general.filesystem:
     fstype: ext4
-    dev: /dev/sdb
+    dev: {{ mount_src_data2 }}
     # state: absent
   become: true
   async: 600               # 10 mins
@@ -46,7 +46,7 @@
 - name: Mount sdb - data2
   mount:
     path: /dev/ray/data2
-    src: /dev/sdb
+    src: {{ mount_src_data2 }}
     fstype: ext4
     state: mounted
-  when: mount_src not in mounted_devices
+  when: mount_src_data2 not in mounted_devices

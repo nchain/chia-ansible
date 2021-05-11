@@ -4,3 +4,7 @@
   remote_user: ray
   roles:
   - deploy-chia
+  vars:
+    mount_src_ssd: /dev/nvme1n1
+    mount_src_data1: /dev/sda
+    mount_src_data2: /dev/sdb
