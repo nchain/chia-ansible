@@ -2,7 +2,7 @@
   community.general.filesystem:
     fstype: ext4
     dev: /dev/nvme1n1
-    state: absent
+    # state: absent
     force: yes
   become: true
 
@@ -10,7 +10,7 @@
   community.general.filesystem:
     fstype: ext4
     dev: /dev/sda
-    state: absent
+    # state: absent
     force: yes
   become: true
   async: 600               # 10 mins
@@ -20,7 +20,7 @@
   community.general.filesystem:
     fstype: ext4
     dev: /dev/sdb
-    state: absent
+    # state: absent
   become: true
   async: 600               # 10 mins
   poll: 0
