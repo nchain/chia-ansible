@@ -1,15 +1,15 @@
 path:
 - /media/ray/data1
 - /media/ray/data2
-minerName: {{ ansible_hostname }}
-apiKey: " {{ }} "
+minerName: {{ hostvars[inventory_hostname].group_names[0] }}
+apiKey: " {{ hostvars[inventory_hostname].apikey }} "
 cachePath: ""
-deviceId: "{{ }}"
+deviceId: "{{ ansible_hostname }}"
 extraParams: {}
 log:
   lv: info
   path: ./log/
-  name: miner.log
+  name: miner-{{ hostvars[inventory_hostname].group_names[0] }}.log
 url:
   info: ""
   submit: ""

@@ -6,11 +6,10 @@
 ACTION=$1
 HOST=$2
 
-[ -z "$ACTION" ] && echo "ACTION must be of { initdisk | init | plot | joinpool | upgrade/up } && exit 1
+[ -z "$ACTION" ] && echo "ACTION must be of { initdisk | init | plot | joinpool } && exit 1
 [ -z "$HOST" ] && HOST=c002
 
-ANSB=~/chia-ansible
-PLAYBOOK=$ANSB/playbooks/deploy-chia.yml
+PLAYBOOK=~/chia-ansible/playbooks/deploy-chia.yml
 TAG=1.1.5
 POOL=hpool
 
