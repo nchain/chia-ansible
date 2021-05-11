@@ -2,7 +2,7 @@
   template: src=hpool_config.j2 dest=~/{{ inventory_hostname }}/hpool_conf.yml
 
 # join HPool
-- name: "join hpool to mine XCH"
+- name: "join hpool to mine XCH "
   shell: "sh ./chia_join_hpool.sh {{ inventory_hostname }}/hpool_conf.yml >/dev/null 2>&1 &)"
-  async: 5
+  async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
