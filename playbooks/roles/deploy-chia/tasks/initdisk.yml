@@ -21,6 +21,7 @@
     fstype: ext4
     state: mounted
   when: mount_src_ssd not in mounted_devices
+  become: true
 
 - name: create ext4 for sda
   community.general.filesystem:
@@ -38,6 +39,7 @@
     fstype: ext4
     state: mounted
   when: mount_src_data1 not in mounted_devices
+  become: true
 
 - name: create ext4 for sdb
   community.general.filesystem:
@@ -54,3 +56,4 @@
     fstype: ext4
     state: mounted
   when: mount_src_data2 not in mounted_devices
+  become: true
