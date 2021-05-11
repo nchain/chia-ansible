@@ -7,7 +7,6 @@
       ignore_errors: yes
     - group_by: key=reachable
       when: ping_result|success
-  when: PARAM == "ping"
 
 - name: check reachable hosts via ssh port
   gather_facts: no
