@@ -12,6 +12,8 @@
     dev: /dev/sda
     opts: -cc
   become: true
+  async: 600               # 10 mins
+  poll: 0
 
 - name: create ext4 for sdb
   filesystem:
@@ -19,7 +21,11 @@
     dev: /dev/sdb
     opts: -cc
   become: true
+  async: 600               # 10 mins
+  poll: 0
 
 - name: create data mount points
   shell: mkdir -p /media/ray/ssd && chown ray. /media/ray/ssd
   become: true
+  async: 600               # 10 mins
+  poll: 0
