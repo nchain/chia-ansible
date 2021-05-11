@@ -1,4 +1,4 @@
-- name: check reachable hosts
+- name: check reachable hosts via ping
   hosts: all
   gather_facts: no
   tasks:
@@ -8,3 +8,12 @@
       ignore_errors: yes
     - group_by: key=reachable
       when: ping_result|success
+  when: ACTION == 'checkhost' and PARAM == "ping"
+
+- name: check reachable hosts via ssh port
+  hosts: target.host
+  gather_facts: no
+  tasks:
+    - wait_for: host=remote.host port=22 timeout=1
+    - debug: msg=ok
+  when: ACTION == 'checkhost' and PARAM == "port"
