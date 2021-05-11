@@ -4,8 +4,8 @@
   changed_when: false
   register: chia_plot_status
 
-- name: Report status of Apache
+- name: Report status of chia-plot
   fail:
     msg: |
       chia-plot not fully launched!
-  when: chia_plot_status | failed
+  when: chia_plot_status
