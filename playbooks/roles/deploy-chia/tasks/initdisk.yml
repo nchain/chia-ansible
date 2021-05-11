@@ -4,9 +4,9 @@
   
 - name: Create list of mounted devices
   set_fact:
-    mounted_devices: "{{ ansible_mounts | json_query('[].device') }}"
+    mounted_devices: "{{ ansible_mounts|json_query('[].device') }}"
 
-- name: create ext4 for ssd ({{ mount_src_ssd }}) of mounted ({{ ansible_mounts }})
+- name: create ext4 for ssd ({{ mount_src_ssd }}) of mounted ({{ mounted_devices }}
   community.general.filesystem:
     fstype: ext4
     dev: "{{ mount_src_ssd }}"
@@ -16,7 +16,7 @@
   become: true
 - name: Mount ssd
   mount:
-    path: /dev/ray/ssd
+    path: "{{ mount_path_ssd }}"
     src: "{{ mount_src_ssd }}"
     fstype: ext4
     state: mounted
@@ -35,7 +35,7 @@
   when: mount_src_data1 not in mounted_devices
 - name: Mount sda - data1
   mount:
-    path: /dev/ray/data1
+    path: "{{ mount_path_data1 }}"
     src: "{{ mount_src_data1 }}"
     fstype: ext4
     state: mounted
@@ -53,7 +53,7 @@
   when: mount_src_data2 not in mounted_devices
 - name: Mount sdb - data2
   mount:
-    path: /dev/ray/data2
+    path: "{{ mount_path_data2 }}"
     src: "{{ mount_src_data2 }}"
     fstype: ext4
     state: mounted
