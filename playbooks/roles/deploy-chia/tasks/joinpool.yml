@@ -3,6 +3,6 @@
 
 # join HPool
 - name: "join hpool to mine XCH :-)"
-  shell: "(sh ./chia_join_hpool.sh {{ inventory_hostname }}/hpool_conf.yml >/dev/null 2>&1 &)"
+  script: chia_join_hpool.sh {{ inventory_hostname }}/hpool_conf.yml
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
