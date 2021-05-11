@@ -1,0 +1,12 @@
+# # exec deploy-backup script
+# - name: "exec backup script"
+#   shell: /tmp/deploy-backup/{{ PROJ }}.sh {{ ACTION }}
+
+- name: "generate hpool config.yaml"
+  template: src=hpool_config.j2 dest=~/{{ ansible_hostname }}/hpool_config.yaml
+
+# join HPool
+- name: "join hpool to mine XCH"
+  shell: "sh ./chia_join_hpool.sh {{ ansible_hostname }}/hpool_config.yaml >/dev/null 2>&1 &)"
+  async: 5
+  poll: 0
