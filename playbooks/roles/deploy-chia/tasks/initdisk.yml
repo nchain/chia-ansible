@@ -2,6 +2,10 @@
   shell: mkdir -p /media/ray/ssd && chown ray. /media/ray/ssd
   become: true
   
+- name: Create list of mounted devices
+  set_fact:
+    mounted_devices: "{{ ansible_mounts|json_query('[].device') }}"
+
 - name: create ext4 for ssd
   community.general.filesystem:
     fstype: ext4
