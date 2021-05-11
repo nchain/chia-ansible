@@ -1,6 +1,6 @@
 # clean docker container
 - name: "initialize {{ inventory_hostname }}'s env"
-  script: init.sh {{ inventory_hostname }} {{ chia_release_tag }}
+  script: init.sh {{ inventory_hostname }} {{ CHIA_RELEASE_TAG }}
 
 - name: "add hostvars[inventory_hostname].mne to {{ inventory_hostname }}"
   copy: 
