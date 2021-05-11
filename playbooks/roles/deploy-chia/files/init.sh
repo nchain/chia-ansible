@@ -1,5 +1,5 @@
 host=$1
-chia_tag=$1
+chia_tag=$2
 
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 mkdir -p ~/$host
