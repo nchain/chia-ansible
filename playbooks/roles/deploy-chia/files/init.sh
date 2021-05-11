@@ -1,4 +1,5 @@
 host=$1
+chia_tag=$1
 
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 mkdir -p ~/$host
@@ -11,8 +12,10 @@ sudo mkdir -p /media/ray/data2 && sudo chown ray:ray /media/ray/data2
 
 cd ~/chia-blockchain
 git remote set-url origin git@github.com:Chia-Network/chia-blockchain.git
+git reset --hard
+git checkout main
 git pull
-git checkout tags/1.1.5
+git checkout tags/$chia_tag
 sh install.sh
 . ./activate
 chia init

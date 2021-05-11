@@ -35,4 +35,4 @@
 #     group: root
 
 - include_tasks: upgrade.yml
-  when: ACTION == "upgrade"
+  when: ACTION == "up"
