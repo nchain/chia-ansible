@@ -1,5 +1,5 @@
 # clean docker container
-- name: "add hostvars[inventory_hostname].mne to {{ inventory_hostname }}"
+- name: "add mne to {{ inventory_hostname }}"
   copy: 
     dest: ~/{{ inventory_hostname }}/mne
     content: "{{ hostvars[inventory_hostname].mne }}"
