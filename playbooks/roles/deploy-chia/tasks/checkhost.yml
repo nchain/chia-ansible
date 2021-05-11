@@ -1,5 +1,13 @@
-- name: check reachable hosts via ssh port
-  gather_facts: no
-  tasks:
-    - wait_for: host=remote.host port=22 timeout=1
-    - debug: msg=ok
+- name: check chia-plot is running
+  command:  [[ $(ps aux |grep plots |wc -l) -eq "{{ hostvars[inventory_hostname].plots }}" ]] && echo "success" || echo "failure"
+  ignore_errors: yes
+  changed_when: false
+  register: chia_plot_status
+
+- name: Report status of Apache
+  fail:
+    msg: |
+      chia-plot not fully launched!
+      Output:
+      [[ $(ps aux |grep plots |wc -l) -eq "{{ hostvars[inventory_hostname].plots }}" ]] && echo "success" || echo "failure"
+  when: chia_plot_status | failed
