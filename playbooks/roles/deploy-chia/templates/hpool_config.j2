@@ -4,7 +4,7 @@ path:
 minerName: {{ hostvars[inventory_hostname].group_names[0] }}
 apiKey: " {{ hostvars[inventory_hostname].apikey }} "
 cachePath: ""
-deviceId: "{{ ansible_hostname }}"
+deviceId: "{{ inventory_hostname }}"
 extraParams: {}
 log:
   lv: info
