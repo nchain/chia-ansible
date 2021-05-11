@@ -1,38 +1,45 @@
 - include_tasks: init.yml
   when: ACTION == "init"
 
-# - name: Include variables
-#   include_vars: "{{ PROJ }}.yml"
+- name: Plot data1 :#1
+  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  async: 10
+  poll: 0
 
-# - name: "create app bin dir if not exsiting"
-#   file: path={{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }} state=directory
+- name: Plot data1 :#2
+  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  async: 10
+  poll: 0
 
-# - name: "create app arti ({{ HOST_ARTI }}) dir if not exsiting"
-#   file: path={{ BASE_DIR }}/{{ PROJ }}/{{ HOST_ARTI }} state=directory
+- name: Plot data1 :#3
+  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  async: 10
+  poll: 0
 
-# - name: "copy install-jdk-img.sh if not found"
-#   copy: src=install-jdk-img.sh dest=/tmp/ mode=755 force=no
+- name: Plot data2 :#1
+  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  async: 10
+  poll: 0
 
-# - name: "copy .ossutilconfig if not found"
-#   copy: src=.ossutilconfig dest=/root/ force=no
+- name: Plot data2 :#2
+  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  async: 10
+  poll: 0
 
-# - name: "copy ossutil64 if not found"
-#   copy: src=ossutil64 dest=/usr/bin mode=755 force=no
+- name: Plot data2 :#3
+  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  async: 10
+  poll: 0
 
-# - name: "download openjdk docker image if not found locally"
-#   shell: docker inspect {{ NEW_JRE_TAG }} > /dev/null 2>&1 || /tmp/install-jdk-img.sh {{ OSS_BIN }} {{ OSS_DIR }}/{{ JDK_IMG_FILE }} {{ JDK_IMG_FILE }} {{ JRE_TAG }} {{ NEW_JRE_TAG }}
+- name: Plot data2 :#4
+  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  async: 10
+  poll: 0
 
-# - name: "download {{ PROJ }}.tar from oss"
-#   shell: "{{ OSS_BIN }} cp --update {{ OSS_TAR_DIR }}/{{ PROJ }}.tar {{ ARTI_DIR }}/{{ PROJ }}.tar"
-
-# - name: "untar {{ ARTI_DIR }}/{{ PROJ }}.tar to {{ BASE_DIR }}/{{ PROJ }}/{{ HOST_BIN }}"
-#   unarchive: 
-#     src: "{{ ARTI_DIR }}/{{ PROJ }}.tar" 
-#     dest: "{{ BASE_DIR }}/{{ PROJ }}/{{ HOST_ARTI }}" 
-#     remote_src: yes
-#     owner: root
-#     mode: 755
-#     group: root
+- name: Plot data2
+  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  async: 10
+  poll: 0
 
 - include_tasks: upgrade.yml
   when: ACTION == "up" or ACTION == "upgrade" 
