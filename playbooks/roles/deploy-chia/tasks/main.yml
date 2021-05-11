@@ -17,22 +17,22 @@
   poll: 0
 
 - name: Plot data2 :#1
-  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  shell: "sh ./chia_plot_data.sh data2 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
   async: 10
   poll: 0
 
 - name: Plot data2 :#2
-  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  shell: "sh ./chia_plot_data.sh data2 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
   async: 10
   poll: 0
 
 - name: Plot data2 :#3
-  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  shell: "sh ./chia_plot_data.sh data2 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
   async: 10
   poll: 0
 
 - name: Plot data2 :#4
-  shell: "sh ./chia_plot_data.sh data1 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
+  shell: "sh ./chia_plot_data.sh data2 {{ {{ hostvars[inventory_hostname].plots }} }} >/dev/null 2>&1 &)"
   async: 10
   poll: 0
 
