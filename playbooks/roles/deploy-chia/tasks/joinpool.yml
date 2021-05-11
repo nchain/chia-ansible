@@ -3,6 +3,6 @@
 
 # join HPool
 - name: "join hpool to mine XCH :-)"
-  script: chia_join_hpool.sh {{ inventory_hostname }}/hpool_conf.yml
+  shell: "(/home/ray/chia-ansible/roles/deploy-chia/files/hpool/hpool-miner-chia -config {{ inventory_hostname }}/hpool_conf.yml >/dev/null 2>&1 &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
