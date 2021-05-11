@@ -1,5 +1,5 @@
 - name: create ext4 for ssd
-  filesystem:
+  community.general.filesystem:
     fstype: ext4
     dev: /dev/nvme1n1
     state: absent
@@ -7,7 +7,7 @@
   become: true
 
 - name: create ext4 for sda
-  filesystem:
+  community.general.filesystem:
     fstype: ext4
     dev: /dev/sda
     state: absent
@@ -17,7 +17,7 @@
   poll: 0
 
 - name: create ext4 for sdb
-  filesystem:
+  community.general.filesystem:
     fstype: ext4
     dev: /dev/sdb
     state: absent
