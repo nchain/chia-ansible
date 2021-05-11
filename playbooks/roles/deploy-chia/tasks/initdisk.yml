@@ -13,7 +13,7 @@
 - name: Mount ssd
   mount:
     path: /dev/ray/ssd
-    src: {{ mount_src_ssd }}
+    src: "{{ mount_src_ssd }}"
     fstype: ext4
     state: mounted
   when: mount_src_ssd not in mounted_devices
@@ -21,7 +21,7 @@
 - name: create ext4 for sda
   community.general.filesystem:
     fstype: ext4
-    dev: {{ mount_src_data1 }}
+    dev: "{{ mount_src_data1 }}"
     # state: absent
     force: yes
   become: true
