@@ -4,7 +4,8 @@
   
 - name: Create list of mounted devices
   set_fact:
-    mounted_devices: "{{ ansible_mounts|json_query('[].device') }}"
+    mounted_devices: "{{ ansible_mounts }}"
+    #mounted_devices: "{{ ansible_mounts|json_query('[].device') }}"
 
 - name: create ext4 for ssd ({{ mount_src_ssd }}) of mounted ({{ mounted_devices }}
   community.general.filesystem:
