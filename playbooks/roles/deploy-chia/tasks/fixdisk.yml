@@ -1,7 +1,15 @@
 - name: unmount /dev/ray/ssd
-  command: umount /dev/ray/ssd && rm -rf /dev/ray && rm -rf /media/ray/ssd/*
+  command: umount /dev/ray/ssd
   become: true
 
+- name: rm -rf /dev/ray
+  command: rm -rf /dev/ray
+  become: true
+
+- name: rm -rf /media/ray/ssd/*
+  command: rm -rf /media/ray/ssd/*
+  become: true
+  
 - name: remove ray lines from /etc/fstab
   command: sed -i '/ray/d' /etc/fstab 
   become: true
