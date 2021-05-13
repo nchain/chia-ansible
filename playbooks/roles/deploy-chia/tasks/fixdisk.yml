@@ -1,5 +1,5 @@
 - name: unmount /dev/ray/ssd
-  command: mount |grep ssd && umount /dev/ray/ssd
+  command: mount |grep /dev/ray/ssd && umount /dev/ray/ssd
   become: true
 
 - name: rm -rf /dev/ray
