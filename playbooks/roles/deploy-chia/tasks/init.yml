@@ -1,4 +1,4 @@
-# clean docker container
+# create mnemonics file
 - name: "add mne to {{ inventory_hostname }}"
   copy: 
     dest: ~/{{ inventory_hostname }}/mne
