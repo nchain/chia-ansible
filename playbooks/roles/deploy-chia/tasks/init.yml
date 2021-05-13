@@ -15,7 +15,7 @@
     force: yes
 
 - name: "import API key into chia"
-  script: chia_add_key.sh 
+  script: chia_add_key.sh {{ inventory_hostname }} 
 
 - name: "copy chia_plot_data.sh to ~/{{ inventory_hostname }} "
   copy: src=chia_plot_data.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
