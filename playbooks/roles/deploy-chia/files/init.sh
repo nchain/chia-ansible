@@ -4,8 +4,6 @@ chia_tag=$2
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 mkdir -p ~/$host
 
-sudo hostnamectl set-hostname $host
-
 sudo mkdir -p /media/ray/ssd && sudo chown ray:ray /media/ray/ssd
 sudo mkdir -p /media/ray/data1 && sudo chown ray:ray /media/ray/data1
 sudo mkdir -p /media/ray/data2 && sudo chown ray:ray /media/ray/data2
