@@ -15,6 +15,3 @@ git checkout main
 git pull
 git checkout tags/$chia_tag
 sh install.sh
-. ./activate
-chia init
-chia keys add -f ~/${host}/mne

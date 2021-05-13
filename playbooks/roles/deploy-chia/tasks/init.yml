@@ -1,3 +1,6 @@
+- name: "initialize {{ inventory_hostname }}'s env"
+  script: init.sh {{ inventory_hostname }} {{ CHIA_RELEASE_TAG }}
+
 # create mnemonics file
 - name: "add mne to {{ inventory_hostname }}"
   copy: 
@@ -11,6 +14,9 @@
     content: "{{ hostvars[inventory_hostname].apikey }}"
     force: yes
 
+- name: "import API key into chia"
+  script: chia_add_key.sh 
+
 - name: "copy chia_plot_data.sh to ~/{{ inventory_hostname }} "
   copy: src=chia_plot_data.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
 
@@ -19,6 +25,5 @@
 
 - name: "generate hpool config.yml"
   template: src=hpool_config.j2 dest=~/{{ inventory_hostname }}/hpool_conf.yml
-  
-- name: "initialize {{ inventory_hostname }}'s env"
-  script: init.sh {{ inventory_hostname }} {{ CHIA_RELEASE_TAG }}
+
+
