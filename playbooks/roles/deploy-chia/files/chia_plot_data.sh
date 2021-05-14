@@ -1,8 +1,8 @@
 ssdPath=/media/ray/$1
 dataPath=/media/ray/$2
 roundNum=$3     # round num
+taskRam=$4      # ram size per task
 kNum=$4         # file format E.g. k32
-taskRam=$5      # ram size per task
 
 rNum=2          # threads per task
 
