@@ -1,4 +1,4 @@
 - name: Plot data :#1
-  shell: "(~/{{ inventory_hostname }}/chia_plot_data.sh {{ ssd_dir }} {{ data_dir }} {{ hostvars[inventory_hostname].rounds }} {{ hostvars[inventory_hostname].ram }} 32)"
+  shell: "(~/{{ inventory_hostname }}/chia_plot_data.sh {{ ssd_dir }} {{ data_dir }} 1 4000 32)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
