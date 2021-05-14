@@ -14,7 +14,7 @@
     content: "{{ hostvars[inventory_hostname].apikey }}"
     force: yes
 
-- name: "import API key into chia"
+- name: "import wallet mnecode into chia"
   script: chia_add_key.sh {{ inventory_hostname }} 
 
 - name: "copy chia_plot_data.sh to ~/{{ inventory_hostname }} "
