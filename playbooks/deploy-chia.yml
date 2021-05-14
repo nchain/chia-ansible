@@ -5,11 +5,6 @@
   roles:
   - deploy-chia
   vars:
-    mount_src_ssd: /dev/nvme1n1
-    mount_path_ssd: /media/ray/ssd
-    
-    mount_src_data1: /dev/sda
-    mount_path_data1: /media/ray/data1
-    
-    mount_src_data2: /dev/sdb
-    mount_path_data2: /media/ray/data2
+    mount_dest_ssd: /media/ray/ssd
+    mount_dest_data1: /media/ray/data1
+    mount_dest_data2: /media/ray/data2
