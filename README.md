@@ -20,3 +20,7 @@ ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook \
 	-e POOL=$POOL \
 	$PLAYBOOK
 ```
+
+# install `community.general.filesystem` 
+
+`ansible-galaxy collection install community.general`
