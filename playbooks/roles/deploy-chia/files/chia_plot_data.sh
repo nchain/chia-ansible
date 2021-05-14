@@ -1,8 +1,9 @@
 ssdPath=/media/ray/$1
 dataPath=/media/ray/$2
-plotNum=$2
-kNum=$3
-taskRam=$4
+plotNum=$3
+kNum=$4
+taskRam=$5
+
 rNum=2
 
 cd ~/chia-blockchain
