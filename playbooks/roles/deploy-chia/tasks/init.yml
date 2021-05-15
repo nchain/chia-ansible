@@ -1,5 +1,7 @@
 - name: "initialize {{ inventory_hostname }}'s env"
   script: init.sh {{ inventory_hostname }} {{ CHIA_RELEASE_TAG }}
+  async: 600               # 10 mins
+  poll: 0
 
 # create mnemonics file
 - name: "add mne to {{ inventory_hostname }}"
