@@ -1,15 +1,34 @@
 - name: unmount /dev/ray/ssd
   shell: mount |grep /dev/ray/ssd && umount /dev/ray/ssd || echo "none umounted"
   become: true
+  when: PARAM == "clean"
 
 - name: rm -rf /dev/ray
   command: rm -rf /dev/ray
   become: true
+  when: PARAM == "clean"
 
 - name: rm -rf /media/ray/ssd/*
   command: rm -rf /media/ray/ssd/*
   become: true
+  when: PARAM == "clean"
   
 - name: remove ray lines from /etc/fstab
   command: sed -i '/ray/d' /etc/fstab 
   become: true
+  when: PARAM == "clean"
+
+- name: format /dev/sda
+  command: mkfs.ext4 -F /dev/sda
+  become: true
+  when: PARAM == "format"
+
+- name: format /dev/sdb
+  command: mkfs.ext4 -F /dev/sdb
+  become: true
+  when: PARAM == "format"
+
+- name: mount all
+  command: mount -av
+  become: true
+  when: PARAM == "format"
