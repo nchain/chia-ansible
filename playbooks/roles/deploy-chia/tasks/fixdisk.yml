@@ -3,6 +3,16 @@
   become: true
   when: PARAM == "clean"
 
+- name: unmount /dev/ray/data1
+  shell: mount |grep /dev/ray/data1 && umount /dev/ray/data1 || echo "none umounted"
+  become: true
+  when: PARAM == "clean"
+
+- name: unmount /dev/ray/data2
+  shell: mount |grep /dev/ray/data2 && umount /dev/ray/data2 || echo "none umounted"
+  become: true
+  when: PARAM == "clean"
+
 - name: rm -rf /dev/ray
   command: rm -rf /dev/ray
   become: true
