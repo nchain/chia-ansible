@@ -7,7 +7,7 @@
 - name: get previous result
   debug:
     var: result
-    verbosity: 2
+    # verbosity: 2
 
 - name: Plot data1 :#2
   shell: "(~/{{ inventory_hostname }}/chia_plot_data.sh {{ inventory_hostname }} {{ hostvars[inventory_hostname].ssd }} {{ hostvars[inventory_hostname].data1 }} {{ hostvars[inventory_hostname].rounds }} 9800 33)"
