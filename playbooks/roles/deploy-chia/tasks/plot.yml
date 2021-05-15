@@ -4,7 +4,8 @@
   poll: 0
   register: result
 
-- debug:
+- name: get previous result
+  debug:
     var: result
     verbosity: 2
 
