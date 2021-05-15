@@ -14,9 +14,6 @@
     content: "{{ hostvars[inventory_hostname].apikey }}"
     force: yes
 
-- name: "import wallet mnecode into chia"
-  script: chia_add_key.sh {{ inventory_hostname }} 
-
 - name: "copy chia_plot_data.sh to ~/{{ inventory_hostname }} "
   copy: src=chia_plot_data.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
 
@@ -26,4 +23,5 @@
 - name: "generate hpool config.yml"
   template: src=hpool_config.j2 dest=~/{{ inventory_hostname }}/hpool_conf.yml
 
-
+- name: "import wallet mnecode into chia"
+  script: chia_add_key.sh {{ inventory_hostname }} 
