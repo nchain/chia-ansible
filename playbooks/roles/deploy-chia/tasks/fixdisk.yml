@@ -1,29 +1,14 @@
-- name: unmount /dev/ray/ssd
-  shell: mount |grep /dev/ray/ssd && umount /dev/ray/ssd || echo "none umounted"
+- name: umount {{ PARAM2 }}
+  shell: mount |grep {{ PARAM2 }} && umount {{ PARAM2 }}  || echo "none umounted"
   become: true
-  when: PARAM == "clean"
+  when: PARAM == "umount"
 
-- name: unmount /dev/ray/data1
-  shell: mount |grep /dev/ray/data1 && umount /dev/ray/data1 || echo "none umounted"
+- name: rm -rf {{ PARAM2 }}
+  command: rm -rf {{ PARAM2 }}
   become: true
-  when: PARAM == "clean"
+  when: PARAM == "rm"
 
-- name: unmount /dev/ray/data2
-  shell: mount |grep /dev/ray/data2 && umount /dev/ray/data2 || echo "none umounted"
-  become: true
-  when: PARAM == "clean"
-
-- name: rm -rf /dev/ray
-  command: rm -rf /dev/ray
-  become: true
-  when: PARAM == "clean"
-
-- name: rm -rf /media/ray/ssd/*
-  command: rm -rf /media/ray/ssd/*
-  become: true
-  when: PARAM == "clean"
-  
-- name: remove ray lines from /etc/fstab
+- name: rm ray lines in /etc/fstab
   command: sed -i '/ray/d' /etc/fstab 
   become: true
   when: PARAM == "clean"
