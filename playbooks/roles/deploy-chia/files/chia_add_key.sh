@@ -5,4 +5,4 @@ cd ~/chia-blockchain
 chia init
 mne_file=~/${host}/mne
 
-[ test -f "$mne_file" ] && chia keys add -f $mne_file
+[ -f "$mne_file" ] && chia keys add -f $mne_file
