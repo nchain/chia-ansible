@@ -9,7 +9,6 @@ rNum=2          # threads per task
 cd ~/chia-blockchain
 . ./activate
 
-echo "chia plots create -n$roundNum -k$kNum -b$taskRam -u128 -r$rNum -t $ssdPath -d $dataPath > /dev/null 2>&1 &" >> ~/$host/chia.log
+echo "chia plots create -n$roundNum -k$kNum -b$taskRam -u128 -r$rNum -t $ssdPath -d $dataPath" >> ~/$host/chia.log
 
-chia plots create -n$roundNum -k$kNum -b$taskRam -u128 -r$rNum \
-    -t $ssdPath -d $dataPath > /dev/null 2>&1 &
+chia plots create -n$roundNum -k$kNum -b$taskRam -u128 -r$rNum -t $ssdPath -d $dataPath
