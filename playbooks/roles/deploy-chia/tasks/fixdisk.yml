@@ -23,13 +23,8 @@
   become: true
   when: PARAM == "clean"
 
-- name: format /dev/sda
-  command: mkfs.ext4 -F /dev/sda
-  become: true
-  when: PARAM == "format"
-
-- name: format /dev/sdb
-  command: mkfs.ext4 -F /dev/sdb
+- name: format /dev/sdb {{ P1 }}
+  command: mkfs.ext4 -F /dev/{{ P1 }}
   become: true
   when: PARAM == "format"
 
