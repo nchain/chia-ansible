@@ -3,13 +3,23 @@
   become: true
   when: PARAM == "reboot"
 
-- name: umount {{ PARAM2 }}
-  shell: mount |grep {{ PARAM2 }} && umount {{ PARAM2 }}  || echo "none umounted"
+- name: inject fstab - {{ P1 }} -> /media/ray/{{ P2 }}
+  shell: cat /etc/fstab |grep {{ P2 }} || echo "/dev/{{ P1 }} /media/ray/{{ P2 }} ext4 defaults 0 0" >> /etc/fstab
+  become: true
+  when: PARAM == fstab
+
+- name: add data2
+  shell: cat /etc/fstab |grep data2 || echo "/dev/sdb /media/ray/data2 ext4 defaults 0 0" >> /etc/fstab
+  become: true
+  when: PARAM == data2
+
+- name: umount {{ P1 }}
+  shell: mount |grep {{ P1 }} && umount {{ P1 }}  || echo "none umounted"
   become: true
   when: PARAM == "umount"
 
-- name: rm -rf {{ PARAM2 }}
-  command: rm -rf {{ PARAM2 }}
+- name: rm -rf {{ P1 }}
+  command: rm -rf {{ P1 }}
   become: true
   when: PARAM == "rm"
 
