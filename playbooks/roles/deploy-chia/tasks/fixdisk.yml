@@ -2,7 +2,7 @@
   reboot:
   become: true
   when: PARAM == "reboot"
-  async: 30               # 0.5 min
+  async: 1               # 1 sec
   poll: 0
 
 - name: inject fstab - /dev/{{ P1 }} -> /media/ray/{{ P2 }}
