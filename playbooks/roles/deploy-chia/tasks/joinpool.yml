@@ -1,5 +1,5 @@
 # join HPool
 - name: "join hpool to mine XCH :-)"
-  shell: "(nohub sh ~/{{ inventory_hostname }}/chia_join_hpool.sh {{ inventory_hostname }} &)"
+  shell: "(nohup ~/{{ inventory_hostname }}/chia_join_hpool.sh {{ inventory_hostname }} &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
