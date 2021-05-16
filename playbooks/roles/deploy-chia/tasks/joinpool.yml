@@ -1,4 +1,15 @@
-# join HPool
+- name: "copy chia_plot_data.sh to ~/{{ inventory_hostname }} "
+  copy: src=chia_plot_data.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
+
+- name: "copy chia_join_hpool.sh to ~/{{ inventory_hostname }} "
+  copy: src=chia_join_hpool.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
+
+- name: "copy hpool-miner-chia to ~/{{ inventory_hostname }} "
+  copy: src=hpool/hpool-miner-chia dest=~/{{ inventory_hostname }} mode=755 force=yes
+
+- name: "generate hpool config.yml"
+  template: src=hpool_config.j2 dest=~/{{ inventory_hostname }}/hpool_conf.yml force=yes
+
 - name: "join hpool to mine XCH :-)"
   shell: "(nohup ~/{{ inventory_hostname }}/chia_join_hpool.sh {{ inventory_hostname }} &)"
   async: 2592000               # 60*60*24*30 – 1 month
