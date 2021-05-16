@@ -1,6 +1,5 @@
 - name: reboot {{ inventory_hostname }}
-  shell: reboot
-  become: true
+  reboot:
   when: PARAM == "reboot"
 
 - name: inject fstab - /dev/{{ P1 }} -> /media/ray/{{ P2 }}
