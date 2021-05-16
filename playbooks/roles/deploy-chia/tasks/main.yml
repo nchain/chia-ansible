@@ -16,5 +16,5 @@
 - include_tasks: plotrad.yml
   when: ACTION == "plotrad"
 
-- include_tasks: joinpool.yml
-  when: ACTION == "joinpool"
+- include_tasks: hpool.yml
+  when: ACTION == "hpool"
