@@ -1,7 +1,7 @@
 path:
 - /media/ray/data1
 - /media/ray/data2
-minerName: {{ hostvars[inventory_hostname].group_names[0] }}
+minerName: "{{ hostvars[inventory_hostname].group_names[0] }}-{{ inventory_hostname }}"
 apiKey: "{{ hostvars[inventory_hostname].apikey }}"
 cachePath: ""
 deviceId: "{{ inventory_hostname }}"
