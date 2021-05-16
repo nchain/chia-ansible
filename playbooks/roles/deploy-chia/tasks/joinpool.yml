@@ -12,5 +12,5 @@
 
 - name: "join hpool to mine XCH :-)"
   shell: ~/{{ inventory_hostname }}/chia_join_hpool.sh {{ inventory_hostname }} {{ PARAM }}
-  async: 0
+  async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
