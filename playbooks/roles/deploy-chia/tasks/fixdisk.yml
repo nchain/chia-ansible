@@ -1,3 +1,8 @@
+- name: reboot {{ inventory_hostname }}
+  shell: reboot
+  become: true
+  when: PARAM == "reboot"
+
 - name: umount {{ PARAM2 }}
   shell: mount |grep {{ PARAM2 }} && umount {{ PARAM2 }}  || echo "none umounted"
   become: true
