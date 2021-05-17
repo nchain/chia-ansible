@@ -9,7 +9,7 @@ extraParams: {}
 log:
   lv: info
   path: ./hpool_logs/
-  name: "miner-{{ hostvars[inventory_hostname].group_names[0] }}-{{ inventory_hostname }}"
+  name: "{{ hostvars[inventory_hostname].group_names[0] }}-{{ inventory_hostname }}"
 url:
   info: ""
   submit: ""
