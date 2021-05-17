@@ -8,7 +8,7 @@ deviceId: "{{ inventory_hostname }}"
 extraParams: {}
 log:
   lv: info
-  path: ./log/
+  path: ./hpool_logs/
   name: "miner-{{ hostvars[inventory_hostname].group_names[0] }}-{{ inventory_hostname }}"
 url:
   info: ""
