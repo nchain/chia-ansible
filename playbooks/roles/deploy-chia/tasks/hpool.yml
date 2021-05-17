@@ -1,6 +1,3 @@
-- name: "copy chia_plot_data.sh to ~/{{ inventory_hostname }} "
-  copy: src=chia_plot_data.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
-
 - name: "copy chia_join_hpool.sh to ~/{{ inventory_hostname }} "
   copy: src=chia_join_hpool.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
 

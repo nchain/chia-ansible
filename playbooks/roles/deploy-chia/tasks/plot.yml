@@ -1,3 +1,6 @@
+- name: "copy chia_plot_data.sh to ~/{{ inventory_hostname }} "
+  copy: src=chia_plot_data.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
+
 - name: Plot data1 :#1
   shell: "(~/{{ inventory_hostname }}/chia_plot_data.sh {{ inventory_hostname }} /media/ray/ssd /media/ray/data1 {{ hostvars[inventory_hostname].rounds }} 9800 33)"
   async: 2592000               # 60*60*24*30 – 1 month
