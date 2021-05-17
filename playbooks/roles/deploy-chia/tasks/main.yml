@@ -1,5 +1,5 @@
-- include_tasks: checkhost.yml
-  when: ACTION == "checkhost"
+- include_tasks: check.yml
+  when: ACTION == "check"
   
 - include_tasks: fixdisk.yml
   when: ACTION == "fixdisk"
