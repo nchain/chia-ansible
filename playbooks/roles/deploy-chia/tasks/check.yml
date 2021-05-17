@@ -2,4 +2,4 @@
   shell:  p=$(ps aux |grep {{ PARAM }} |wc -l) && [[ "$p" -ge "{{ P1 }}" ]] && echo "success" || echo "failure"
   ignore_errors: yes
   register: chia_status
-  changed_when: "'success'" in chia_status.stdout"
+  changed_when: "'success' in chia_status.stdout"
