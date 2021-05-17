@@ -2,6 +2,10 @@
 #   debug:
 #     msg: "'{{ lookup('env', 'PARAM') }}' is the PARAM environment variable."
 
+- name: kill all join_pool
+  shell: killall hpool-miner-chia
+  become: true
+  
 - name: "copy chia_join_hpool.sh to ~/{{ inventory_hostname }} "
   copy: src=chia_join_hpool.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
 
