@@ -11,4 +11,4 @@ cd ~/chia-blockchain
 
 echo "chia plots create -n$roundNum -k$kNum -b$taskRam -u128 -r$rNum -t $ssdPath -d $dataPath" >> ~/$host/chia.log
 
-chia plots create -n$roundNum -k$kNum -b$taskRam -u128 -r$rNum -t $ssdPath -d $dataPath
+chia plots create -n$roundNum -k$kNum -b$taskRam -u128 -r$rNum -t $ssdPath -d $dataPath > /dev/null 2&1 &
