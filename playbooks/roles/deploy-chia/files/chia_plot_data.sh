@@ -6,9 +6,8 @@ taskRam=$5      # ram size per task
 kNum=$6         # file format E.g. k32
 rNum=2          # threads per task
 
-cd ~/chia-blockchain
-. ./activate
-
 echo "chia plots create -n$roundNum -k$kNum -b$taskRam -u128 -r$rNum -t $ssdPath -d $dataPath" >> /tmp/chia-plot.log
 
-chia plots create -n$roundNum -k$kNum -b$taskRam -u128 -r$rNum -t $ssdPath -d $dataPath > /dev/null 2&1
+cd ~/chia-blockchain
+. ./activate
+chia plots create -n$roundNum -k$kNum -b$taskRam -u128 -r$rNum -t $ssdPath -d $dataPath
