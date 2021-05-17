@@ -1,8 +1,8 @@
 - include_tasks: check.yml
   when: ACTION == "check"
   
-- include_tasks: fixdisk.yml
-  when: ACTION == "fixdisk"
+- include_tasks: fix.yml
+  when: ACTION == "fix"
 
 - include_tasks: initdisk.yml
   when: ACTION == "initdisk"

@@ -5,6 +5,11 @@
   async: 1               # 1 sec
   poll: 0
 
+- name: kill all join_pool
+  shell: killall hpool-miner-chia
+  become: true
+  when: PARAM == "kpool"
+
 - name: inject fstab - /dev/{{ P1 }} -> /media/ray/{{ P2 }}
   shell: cat /etc/fstab |grep {{ P2 }} || echo "/dev/{{ P1 }} /media/ray/{{ P2 }} ext4 defaults 0 0" >> /etc/fstab
   become: true
