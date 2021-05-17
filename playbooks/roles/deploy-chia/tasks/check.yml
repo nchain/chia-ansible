@@ -1,5 +1,5 @@
-- name: check chia-plot is running - {{ hostvars[inventory_hostname].rounds }}
-  shell:  $(ps aux |grep plots |wc -l) -eq {{ hostvars[inventory_hostname].rounds }} && echo "success" || echo "failure"
+- name: check chia-plot is running
+  shell:  $(ps aux |grep plots |wc -l) -eq 3 && echo "success" || echo "failure"
   ignore_errors: yes
   changed_when: false
   register: chia_plot_status
