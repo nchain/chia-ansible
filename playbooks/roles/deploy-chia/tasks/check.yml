@@ -1,11 +1,11 @@
-- name: check chia-plot is running
-  shell:  $(ps aux |grep plots |wc -l) -ge 3 && echo "success" || echo "failure"
+- name: check chia -{{ PARAM }}- is running
+  shell:  p=$(ps aux |grep {{ PARAM }} |wc -l) && [[ "$p" -ge {{ P1 }} ]] && echo "success" || echo "failure"
   ignore_errors: yes
   changed_when: false
-  register: chia_plot_status
+  register: chia_status
 
-- name: Report status of chia-plot
+- name: Report status of chia -{{ PARAM }}-
   fail:
     msg: |
-      chia-plot not fully launched!
-  when: chia_plot_status
+      chia-{{ PARAM }}- not fully launched!
+  when: chia_status
