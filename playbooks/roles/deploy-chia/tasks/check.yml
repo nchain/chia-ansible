@@ -3,3 +3,6 @@
   register: chia_ps
   failed_when: chia_ps.rc == 1
   changed_when: chia_ps.rc == 0
+
+- debug:
+    msg: "chia_ps.rc = {{ chia_ps.rc }}"
