@@ -1,4 +1,4 @@
-- name: check chia {{ PARAM }} >= {{ P1 }} is running
+- name: check chia {{ PARAM }} is running
   command:  ps aux |grep {{ PARAM }} |wc -l
   # ignore_errors: yes
   register: chia_status
