@@ -4,5 +4,5 @@
   register: chia_ps
   failed_when: chia_ps.stdout == 1
 
-- debug:
-    msg: "chia_ps: {{ chia_ps.stdout }}"
+- debug: msg: "chia_ps: {{ chia_ps.stdout }}"
+- debug: msg: "{{ chia_ps.stderr }}"
