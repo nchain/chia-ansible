@@ -1,4 +1,6 @@
 - name: check chia [ {{ PARAM }} ] is running
-  shell:  pgrep {{ PARAM }}
+  shell:  pgrep -f {{ PARAM }} >/dev/null 
+  register: chia_ps
   ignore_errors: yes
-  failed_when: false
+  failed_when: chia_ps.rc == 1
+  # changed_when: false
