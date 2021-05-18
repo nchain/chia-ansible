@@ -2,6 +2,6 @@
   shell:  ps aux | grep {{ PARAM }} | wc -l
   # ignore_errors: yes
   register: chia_ps
-  failed_when: chia_ps.stdout == 1
+  failed_when: chia_ps.stdout == 2
 
 - debug: var=chia_ps
