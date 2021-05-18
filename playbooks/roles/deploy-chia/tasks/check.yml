@@ -1,5 +1,4 @@
 - name: check chia [ {{ PARAM }} ] is running
-  gather_facts: no
   shell:  pgrep {{ PARAM }}
   ignore_errors: yes
   changed_when: false
