@@ -3,7 +3,3 @@
   ignore_errors: yes
   changed_when: false
   register: chia_ps
-
-- debug: 
-  msg: {{ chia_ps.rc }}
-  when: chia_ps.rc != 0
