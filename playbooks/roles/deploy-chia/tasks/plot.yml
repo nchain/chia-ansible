@@ -2,7 +2,7 @@
   copy: src=chia_plot_data.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
 
 - name: Plot data1 :#1
-  shell: "(nohuup ~/{{ inventory_hostname }}/chia_plot_data.sh {{ inventory_hostname }} /media/ray/ssd /media/ray/data1 {{ hostvars[inventory_hostname].rounds }} 9800 33 &)"
+  shell: "(nohup ~/{{ inventory_hostname }}/chia_plot_data.sh 33 {{ hostvars[inventory_hostname].rounds }} 4096 /media/ray/ssd /media/ray/data1 &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
   # register: result
