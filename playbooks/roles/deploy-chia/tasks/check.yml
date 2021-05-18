@@ -1,5 +1,5 @@
 - name: check chia [ {{ PARAM }} ] is running
-  command:  ps ax | grep {{ PARAM }} | wc -l
+  shell:  ps aux | grep {{ PARAM }} | wc -l
   # ignore_errors: yes
   register: chia_status
   failed_when: chia_status.rc == 1
