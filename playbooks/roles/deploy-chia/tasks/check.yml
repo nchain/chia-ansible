@@ -3,3 +3,6 @@
   # ignore_errors: yes
   register: chia_status
   failed_when: chia_status.rc == 1
+
+- debug:
+    msg: "{{ chia_status.rc }}"
