@@ -1,13 +1,24 @@
-host=$1
-ssdPath=$2
-dataPath=$3
-roundNum=$4     # round num
-taskRam=$5      # ram size per task
-kNum=$6         # file format E.g. k32
-rNum=2          # threads per task
+#!/bin/bash
 
-echo "chia plots create -n$roundNum -k$kNum -b$taskRam -u128 -r$rNum -t $ssdPath -d $dataPath" >> /tmp/chia-plot.log
+kNum=$1         # file format E.g. k32
+roundNum=$2     # round num
+taskRam=$3      # ram size per task, E.g. 4000
+fpk=$4
+ppk=$5
+ssdPath=$6
+dataPath=$7
+
+LOG=/tmp/chia-plot.log
 
 cd ~/chia-blockchain
 . ./activate
-chia plots create -n$roundNum -k$kNum -b$taskRam -u128 -r$rNum -t $ssdPath -d $dataPath
+
+echo "#############################################################"
+echo "chia plots create -k$kNum -n$roundNum -b$taskRam -f$fpk -p$ppk -t$ssdPath -d$dataPath" >> $LOG
+echo "#############################################################"
+
+STARTTIME=$(date +%s)
+chia plots create -k$kNum -n$roundNum -b$taskRam -f$fpk -p$ppk -t$ssdPath -d$dataPath
+ENDTIME=$(date +%s)
+
+echo "It takes $($ENDTIME - $STARTTIME) sec to complete this plotting" >> $LOG
