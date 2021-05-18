@@ -2,4 +2,3 @@
   shell:  pgrep {{ PARAM }}
   ignore_errors: yes
   changed_when: false
-  register: chia_ps
