@@ -1,5 +1,5 @@
 - name: check chia {{ PARAM }} >= {{ P1 }} is running
-  command:  p=$(ps aux |grep {{ PARAM }} |wc -l) && [[ "$p" -ge "{{ P1 }}" ]] && echo "success" || echo "failure"
+  command:  ps aux |grep {{ PARAM }} |wc -l
   # ignore_errors: yes
   register: chia_status
-  failed_when: "'failure' in {{ chia_status.stderr }}"
+  failed_when: chia_status.rc == 1
