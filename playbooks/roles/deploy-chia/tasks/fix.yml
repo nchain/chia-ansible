@@ -16,9 +16,21 @@
   when: PARAM == "umount"
 
 - name: rm -rf {{ P1 }}
-  command: rm -rf {{ P1 }}
+  shell: /bin/rm -rf {{ P1 }}
   become: true
   when: PARAM == "rm"
+
+- name: get files in {{ P1 }}
+  find:
+    paths: "{{ P1 }}"
+  register: ssd_temp_files
+
+- name: rm files in {{ P1 }}
+  file:
+    path: "{{ item.path }}"
+    state: absent
+  with_items: "{{ ssd_temp_files.files }}
+
 
 - name: rm ray lines in /etc/fstab
   command: sed -i '/ray/d' /etc/fstab 
