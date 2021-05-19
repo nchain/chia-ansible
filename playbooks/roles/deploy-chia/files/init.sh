@@ -1,6 +1,8 @@
 host=$1
 chia_tag=$2
 
+sudo timedatectl set-timezone Asia/Shanghai
+
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 mkdir -p ~/$host
 
