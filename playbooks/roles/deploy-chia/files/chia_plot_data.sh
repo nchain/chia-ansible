@@ -8,9 +8,11 @@ dataPath=$5
 fpk=$6
 ppk=$7
 
+cachePath=/media/ray/data2/cache
+
 LOG=/tmp/chia-plot.log
 
-PARAMS="-k$kNum -n$roundNum -b$taskRam -t$ssdPath -d$dataPath"
+PARAMS="-k$kNum -n$roundNum -b$taskRam -t$ssdPath -2 $cachePath -d$dataPath"
 [ ! -z "$fpk" ] && PARAMS="$PARAMS -f$fpk"
 [ ! -z "$ppk" ] && PARAMS="$PARAMS -p$ppk"
 
