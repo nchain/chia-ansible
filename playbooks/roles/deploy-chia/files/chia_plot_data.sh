@@ -5,14 +5,15 @@ roundNum=$2     # round num
 taskRam=$3      # ram size per task, E.g. 4000
 ssdPath=$4
 dataPath=$5
-fpk=$6
-ppk=$7
+figerprint=$6
+fpk=$7
+ppk=$8
 
 cachePath=/media/ray/data2/cache
 
 LOG=/tmp/chia-plot.log
 
-PARAMS="-k$kNum -n$roundNum -b$taskRam -t$ssdPath -2 $cachePath -d$dataPath"
+PARAMS="-k$kNum -n$roundNum -b$taskRam -t$ssdPath -2 $cachePath -d$dataPath -a$figerprint"
 [ ! -z "$fpk" ] && PARAMS="$PARAMS -f$fpk"
 [ ! -z "$ppk" ] && PARAMS="$PARAMS -p$ppk"
 
