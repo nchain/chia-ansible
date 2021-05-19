@@ -29,8 +29,7 @@
   file:
     path: "{{ item.path }}"
     state: absent
-  with_items: "{{ ssd_temp_files.files }}
-
+  with_items: "{{ ssd_temp_files.files }}"
 
 - name: rm ray lines in /etc/fstab
   command: sed -i '/ray/d' /etc/fstab 
