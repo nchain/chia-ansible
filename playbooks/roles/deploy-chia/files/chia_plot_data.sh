@@ -11,18 +11,18 @@ ppk=$7
 LOG=/tmp/chia-plot.log
 
 PARAMS="-k$kNum -n$roundNum -b$taskRam -t$ssdPath -d$dataPath"
-[ -z "$fpk" ] && PARAMS="$PARAMS -f$fpk"
-[ -z "$ppk" ] && PARAMS="$PARAMS -p$ppk"
+[ ! -z "$fpk" ] && PARAMS="$PARAMS -f$fpk"
+[ ! -z "$ppk" ] && PARAMS="$PARAMS -p$ppk"
 
 cd ~/chia-blockchain
 . ./activate
 
-echo "#############################################################"
-echo "chia plots create $PARMS" >> $LOG
-echo "#############################################################"
+echo "#############################################################" >> $LOG
+echo "chia plots create $PARAMS" >> $LOG
+echo "#############################################################" >> $LOG
 
 STARTTIME=$(date +%s)
 chia plots create $PARAMS > /dev/null 2>&1
 ENDTIME=$(date +%s)
 
-echo "It takes $($ENDTIME - $STARTTIME) sec to complete this plotting" >> $LOG
+echo "It takes $(($ENDTIME - $STARTTIME)) sec to complete this plotting" >> $LOG
