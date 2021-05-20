@@ -1,7 +1,3 @@
-- name: set hostname {{ inventory_hostname }}
-  command: hostnamectl set-hostname {{ inventory_hostname }}
-  become: true
-
 - name: create data mount points
   shell: mkdir -p /media/ray/ssd && chown ray. /media/ray/ssd
   become: true
