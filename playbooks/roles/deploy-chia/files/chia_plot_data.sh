@@ -20,6 +20,8 @@ PARAMS="-k$kNum -n$roundNum -b$taskRam -t $ssdPath -2 $cachePath -d $dataPath -a
 cd ~/chia-blockchain
 . ./activate
 
+chia stop -d all
+
 echo "#############################################################" >> $LOG
 echo "chia plots create $PARAMS" >> $LOG
 echo "#############################################################" >> $LOG
