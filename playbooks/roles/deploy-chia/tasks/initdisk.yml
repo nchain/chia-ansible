@@ -13,7 +13,7 @@
   community.general.filesystem:
     fstype: ext4
     dev: "{{ mount_src_ssd }}"
-    # state: absent
+    state: unmounted
     force: yes
   when: mount_src_ssd not in mounted_devices
   become: true
@@ -22,7 +22,7 @@
     path: "{{ mount_dest_ssd }}"
     src: "{{ mount_src_ssd }}"
     fstype: ext4
-    state: mounted
+    state: absent
   when: mount_src_ssd not in mounted_devices
   become: true
 
@@ -30,11 +30,9 @@
   community.general.filesystem:
     fstype: ext4
     dev: "{{ mount_src_data1 }}"
-    # state: absent
+    state: absent
     force: yes
   become: true
-  async: 600               # 10 mins
-  poll: 0
   when: mount_src_data1 not in mounted_devices
 - name: Mount sda - data1
   mount:
@@ -49,10 +47,8 @@
   community.general.filesystem:
     fstype: ext4
     dev: "{{ mount_src_data2 }}"
-    # state: absent
+    state: absent
   become: true
-  async: 600               # 10 mins
-  poll: 0
   when: mount_src_data2 not in mounted_devices
 - name: Mount sdb - data2
   mount:
