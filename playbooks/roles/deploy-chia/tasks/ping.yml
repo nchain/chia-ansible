@@ -1,4 +1,4 @@
-- hosts: {{ HOST }}
+- hosts: "{{ HOST }}"
   gather_facts: false
   tasks:
     - block:
