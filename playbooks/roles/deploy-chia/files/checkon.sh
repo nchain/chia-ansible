@@ -6,5 +6,12 @@ bash_ding="bash /home/ray/chia-ansible/playbooks/roles/deploy-chia/files/ding.sh
 
 $checkon all > ~/checkon.log
 res=$(cat ./checkon.log |grep "unreachable=1" |cut -d ' ' -f1)
+echo $res
 
-$bash_ding "【Chia机器下线报警】" $res
+IFS=$'\n' read -rd '' -a hosts <<<"$res"
+for host in "${hosts[@]}"; do
+    offline_hosts="$offline_hosts $host"
+done
+offline_hosts="(${offline_hosts})"
+
+$bash_ding "【Chia机器下线报警】" $offline_hosts
