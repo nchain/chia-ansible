@@ -28,7 +28,7 @@ echo "chia plots create $PARAMS" >> $LOG
 echo "#############################################################" >> $LOG
 
 STARTTIME=$(date +%s)
-chia plots create $PARAMS > /dev/null 2>&1
+chia plots create $PARAMS # > /dev/null 2>&1
 ENDTIME=$(date +%s)
 
 echo "It takes $(($ENDTIME - $STARTTIME)) sec to complete this plotting" >> $LOG
