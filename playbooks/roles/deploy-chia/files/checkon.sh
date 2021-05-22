@@ -15,4 +15,4 @@ done
 
 echo $offline_hosts
 
-$bash_ding "【Chia机器下线报警】" $offline_hosts
+$bash_ding "【Chia机器下线报警】" "$offline_hosts"
