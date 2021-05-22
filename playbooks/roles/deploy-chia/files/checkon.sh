@@ -12,7 +12,6 @@ IFS=$'\n' read -rd '' -a hosts <<<"$res"
 for host in "${hosts[@]}"; do
     offline_hosts="$offline_hosts $host"
 done
-offline_hosts="(${offline_hosts})"
 
 echo $offline_hosts
 
