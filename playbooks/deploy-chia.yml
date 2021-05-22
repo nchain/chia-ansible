@@ -1,6 +1,5 @@
 - name: chia ops playbook
   hosts: "{{ HOST }}"
-  gather_facts: yes
   remote_user: ray
   roles:
   - deploy-chia
