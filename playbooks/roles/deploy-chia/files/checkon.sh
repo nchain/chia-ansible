@@ -14,4 +14,6 @@ for host in "${hosts[@]}"; do
 done
 offline_hosts="(${offline_hosts})"
 
+echo $offline_hosts
+
 $bash_ding "【Chia机器下线报警】" $offline_hosts
