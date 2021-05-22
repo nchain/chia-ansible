@@ -4,11 +4,11 @@ DingdingUrl=https://oapi.dingtalk.com/robot/send?access_token=2b8cf0781734a2db5c
 subject=$1
 offlines=$2
 
-echo $offlines
+IFS=$'\n' read -rd '' -a hosts <<<"$offlines"
 
 body='('
-for i in "${offlines[@]}"; do
-    body="$body $i"
+for host in "${hosts[@]}"; do
+    body="$body $host"
 done
 body=')'
 
