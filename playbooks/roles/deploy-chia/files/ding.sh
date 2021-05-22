@@ -4,12 +4,11 @@ DingdingUrl=https://oapi.dingtalk.com/robot/send?access_token=2b8cf0781734a2db5c
 Subject=$1
 Body=$2
 
-function SendMessageToDingding {
 curl $DingdingUrl -H 'Content-Type: application/json' --data-binary @- << EOF
 {
     "actionCard": {
-        "title": "$1", 
-        "text": "$2", 
+        "title": "$Subject", 
+        "text": "$Body", 
         "hideAvatar": "0", 
         "btnOrientation": "0", 
         "btns": [
@@ -22,6 +21,3 @@ curl $DingdingUrl -H 'Content-Type: application/json' --data-binary @- << EOF
     "msgtype": "actionCard"
 }
 EOF
-} 
-
-SendMessageToDingding $Subject $Body
