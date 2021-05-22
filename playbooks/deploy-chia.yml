@@ -1,4 +1,4 @@
-- name: deploy chia plotting env
+- name: chia ops playbook
   hosts: "{{ HOST }}"
   gather_facts: yes
   remote_user: ray

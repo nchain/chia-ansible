@@ -1,19 +1,19 @@
-- hosts: "{{ HOST }}"
-  gather_facts: false
-  tasks:
-    - block:
-        - wait_for_connection:
-            sleep: 1
-            timeout: 10
-      rescue:
-        - debug:
-            msg: "{{ inventory_hostname }} not connected. End of host."
-        - meta: clear_host_errors
-        - meta: end_host
+- gather_facts: false
 
-    - debug:
-        msg: "{{ inventory_hostname }} is running"
-    - setup:
+- block:
+  - wait_for_connection:
+      sleep: 1
+      timeout: 10
+      
+- rescue:
+  - debug:
+      msg: "{{ inventory_hostname }} not connected. End of host."
+  - meta: clear_host_errors
+  - meta: end_host
+
+  - debug:
+      msg: "{{ inventory_hostname }} is running"
+  - setup:
 
 - name: Store actual host to be used with local_action
   set_fact:
