@@ -12,14 +12,3 @@
 - debug:
     msg: "{{ inventory_hostname }} is running"
 - setup:
-
-- name: Store actual host to be used with local_action
-  set_fact:
-    original_host: "{{ ansible_host }}"
-- name: Wait for ping loss
-  local_action: shell ping -q -c 1 -W 1 {{ original_host }}
-  register: res
-  retries: 5
-  until: ('100.0% packet loss' in res.stdout)
-  failed_when: ('100.0% packet loss' not in res.stdout)
-  changed_when: no
