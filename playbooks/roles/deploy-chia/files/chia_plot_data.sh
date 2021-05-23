@@ -22,6 +22,7 @@ cd ~/chia-blockchain
 . ./activate
 
 chia stop -d all
+rm -rf $ssdPath/*
 
 echo "#############################################################" >> $LOG
 echo "chia plots create $PARAMS" >> $LOG
