@@ -2,7 +2,7 @@
   copy: src=chia_plot_data.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
 
 - name: Plot data1 :#1
-  shell: "(nohup ~/{{ inventory_hostname }}/chia_plot_data.sh 33 {{ hostvars[inventory_hostname].rounds }} 4096 /media/ray/ssd /media/ray/data1 {{ hostvars[inventory_hostname].fingerprint }} PARAM &)"
+  shell: "(nohup ~/{{ inventory_hostname }}/chia_plot_data.sh 33 {{ hostvars[inventory_hostname].rounds }} 4096 /media/ray/ssd /media/ray/data1 {{ hostvars[inventory_hostname].fingerprint }} {{ PARAM }} &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
   # register: result
@@ -13,11 +13,11 @@
     # verbosity: 2
 
 - name: Plot data1 :#2
-  shell: "(nohup ~/{{ inventory_hostname }}/chia_plot_data.sh 33 {{ hostvars[inventory_hostname].rounds }} 4096 /media/ray/ssd /media/ray/data1 {{ hostvars[inventory_hostname].fingerprint }} PARAM &)"
+  shell: "(nohup ~/{{ inventory_hostname }}/chia_plot_data.sh 33 {{ hostvars[inventory_hostname].rounds }} 4096 /media/ray/ssd /media/ray/data1 {{ hostvars[inventory_hostname].fingerprint }} {{ PARAM }} &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
 
 - name: Plot data2 :#1
-  shell: "(nohup ~/{{ inventory_hostname }}/chia_plot_data.sh 33 {{ hostvars[inventory_hostname].rounds }} 4096 /media/ray/ssd /media/ray/data2 {{ hostvars[inventory_hostname].fingerprint }} PARAM &)"
+  shell: "(nohup ~/{{ inventory_hostname }}/chia_plot_data.sh 33 {{ hostvars[inventory_hostname].rounds }} 4096 /media/ray/ssd /media/ray/data2 {{ hostvars[inventory_hostname].fingerprint }} {{ PARAM }} &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
