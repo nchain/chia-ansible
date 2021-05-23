@@ -14,7 +14,7 @@ cachePath=/media/ray/data2/cache
 
 LOG=/tmp/chia-plot.log
 
-PARAMS="-k$kNum -n$roundNum -b$taskRam -t $ssdPath -2 $cachePath -d $dataPath"
+PARAMS="-k$kNum -n$roundNum -b$taskRam -t$ssdPath -2$cachePath -d$dataPath"
 [ ! -z "$fingerprint" ] && PARAMS="$PARAMS -a$fingerprint"
 [ ! -z "$threads" ] && PARAMS="$PARAMS -r$threads"
 [ ! -z "$fpk" ] && PARAMS="$PARAMS -f$fpk"
