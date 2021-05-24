@@ -6,8 +6,7 @@
   poll: 0
 
 - name: Delay shutting down the remote node
-  community.general.shutdown:
-    delay: 3
+  shell: shutdown now
   become: true  
   when: PARAM == "shutdown"
 
