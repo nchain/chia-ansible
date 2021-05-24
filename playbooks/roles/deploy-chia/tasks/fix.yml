@@ -5,7 +5,7 @@
   async: 1               # 1 sec
   poll: 0
 
-- name: Delay shutting down the remote node
+- name: Immediately shutting down the remote node
   shell: shutdown now
   become: true  
   when: PARAM == "shutdown"
