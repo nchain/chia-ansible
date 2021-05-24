@@ -3,7 +3,7 @@
 #     msg: "'{{ lookup('env', 'PARAM') }}' is the PARAM environment variable."
 
 - name: kill all join_pool
-  shell: killall hpool-miner-chia
+  shell: killall hpool-miner-chia || echo "none hpool to kill"
   become: true
   ignore_errors: yes
   
