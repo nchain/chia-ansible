@@ -58,8 +58,8 @@ function batch_exec {
     tmp1Path="$ssdPath/tmp$plot_id"
     tmp2Path="$ssd2Path/tmp$plot_id"
     mkdir -p $tmp1Path $tmp2Path
-    echo "$MYDIR/chia_plot_data.sh $tmp1Path $tmp2Path $dataPath &" >> $LOG
-
+    echo "bash $MYDIR/chia_plot_data.sh $tmp1Path $tmp2Path $dataPath" >> $LOG
+    
     bash $MYDIR/chia_plot_data.sh $tmp1Path $tmp2Path $dataPath
 
     echo ">>> sleep $batchTaskInterval sec..." >> $LOG
