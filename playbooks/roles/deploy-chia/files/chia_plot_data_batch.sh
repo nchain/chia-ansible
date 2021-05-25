@@ -1,6 +1,7 @@
 #!/bin/bash
 
-PLOT_CONF='/home/rad/chia-batch/chia_plot_task.conf'
+MYDIR="$(dirname "$(readlink -f "$0")")"
+PLOT_CONF="$MYDIR"/plot.conf
 PARTIAL_DONE='partially-done'
 ALL_DONE='all-done'
 
@@ -52,7 +53,7 @@ function batch_exec {
     tmpPath1="$ssdPath/tmp$plot_id"
     tmpPath2="$ssd2Path/tmp$plot_id"
     mkdir -p tmp1 tmp2
-    sh ./chia_plot_data.sh $kNum $roundNum $taskRam $taskThreads $tmpPath1 $tmpPath2 $dataPath $fpk $ppk &
+    sh ./chia_plot_data.sh &
 
     echo "sleep $batchTaskInterval sec..."
     sleep $batchTaskInterval

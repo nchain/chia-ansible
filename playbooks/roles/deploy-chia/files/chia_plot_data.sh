@@ -1,6 +1,7 @@
 #!/bin/bash
 
-PLOT_CONF=$1/plot.conf
+MYDIR="$(dirname "$(readlink -f "$0")")"
+PLOT_CONF="$MYDIR"/plot.conf
 source <(grep = "$PLOT_CONF")
 
 LOG=/tmp/chia-plot.log
