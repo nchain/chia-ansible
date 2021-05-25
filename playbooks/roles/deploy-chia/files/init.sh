@@ -4,6 +4,7 @@ chia_tag=$2
 sudo timedatectl set-timezone Asia/Shanghai
 
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+rm -rf ~/$host
 mkdir -p ~/$host
 
 sudo mkdir -p /media/ray/ssd && sudo chown ray:ray /media/ray/ssd
