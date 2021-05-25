@@ -16,8 +16,7 @@
 
 - name: Batch run plotting now...
   script: ~/{{ inventory_hostname }}/chia_plot_data_batch.sh
-  async: 2592000               # 60*60*24*30 – 1 month
-  poll: 0
+
   # register: result
 
 # - name: get previous result
