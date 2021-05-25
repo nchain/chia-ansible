@@ -5,14 +5,14 @@ PLOT_CONF="$MYDIR"/plot.conf
 cd $MYDIR
 source <(grep = ./plot.conf )
 
-dataPath=$1
-ssdPath=$2
-ssd2Path=$3
+tmp1Path=$1
+tmp2Path=$2
+dataPath=$3
 LOG=/tmp/chia-plot.log
 
 mkdir -p $ssd2Path
 
-PARAMS="-k$kNum -n$roundNum -b$taskRam -r$taskThreads -t$ssdPath -2$ssd2Path -d$dataPath"
+PARAMS="-k$kNum -n$roundNum -b$taskRam -r$taskThreads -t$tmp1Path -2$tmp2Path -d$dataPath"
 [ ! -z "$fpk" ] && PARAMS="$PARAMS -f$fpk"
 [ ! -z "$ppk" ] && PARAMS="$PARAMS -p$ppk"
 

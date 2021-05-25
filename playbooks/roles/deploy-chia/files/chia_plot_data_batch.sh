@@ -48,11 +48,11 @@ function batch_exec {
   do
     echo ">>> Starting batch[$i]"
     plot_id=$(( $plotting_cnt + i))
-    tmpPath1="$ssdPath/tmp$plot_id"
-    tmpPath2="$ssd2Path/tmp$plot_id"
+    tmp1Path="$ssdPath/tmp$plot_id"
+    tmp2Path="$ssd2Path/tmp$plot_id"
 
-    mkdir -p $tmpPath1 $tmpPath2
-    bash ./chia_plot_data.sh $tmpPath1 $tmpPath2 $dataPath &
+    mkdir -p $tmp1Path $tmp2Path
+    bash ./chia_plot_data.sh $tmp1Path $tmp2Path $dataPath &
 
     echo ">>> sleep $batchTaskInterval sec..."
     sleep $batchTaskInterval
