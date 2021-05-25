@@ -1,9 +1,11 @@
 #! /bin/bash
 
+MYDIR="$(dirname "$(readlink -f "$0")")"
+
 case "$(pidof autossh | wc -w)" in
 
 0)  echo "Restarting autossh for to hn-jump:     $(date)" >> /tmp/jumpstart.log
-    sh ./add_jump_ssh_tunnel.sh &
+    sh $MYDIR/add_jump_ssh_tunnel.sh &
     ;;
 1)  # all ok
     ;;
