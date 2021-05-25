@@ -5,8 +5,10 @@ PLOT_CONF="$MYDIR"/plot.conf
 cd $MYDIR
 source <(grep = ./plot.conf )
 
-LOG=/tmp/chia-plot.log
 dataPath=$1
+ssdPath=$2
+ssd2Path=$3
+LOG=/tmp/chia-plot.log
 
 mkdir -p $ssd2Path
 
