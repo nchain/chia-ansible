@@ -1,6 +1,7 @@
 # ssh -fN -R hn-jump:10022:localhost:22 richardchen@hn-jump 
 
-cd ~ && source <(grep = "./autossh.conf")
+cd ~ && source <(grep = "autossh.conf")
+
 autossh -M $mon_port -fN \
   -o "PubkeyAuthentication=yes" \
   -o "StrictHostKeyChecking=false" \
