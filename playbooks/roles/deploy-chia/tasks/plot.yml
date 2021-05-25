@@ -5,14 +5,17 @@
 - name: "copy chia_plot_data.sh to ~/{{ inventory_hostname }} "
   copy: src=chia_plot_data.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
 
+- name: "copy chia_plot_data_batch.sh to ~/{{ inventory_hostname }} "
+  copy: src=chia_plot_data_batch.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
+
 - name: "clean previous plotting tasks"
   shell: pkill chia || echo "none chia ps to kill"
   
 - name: "clean previous temp files"
   shell: rm -rf /media/ray/ssd/*.tmp || echo "none tmpe file to clean"
 
-- name: Plot data now...
-  shell: "(nohup ~/{{ inventory_hostname }}/chia_plot_data.sh &)"
+- name: Batch run plotting now...
+  shell: "(nohup ~/{{ inventory_hostname }}/chia_plot_data_batch.sh &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
   # register: result
@@ -21,13 +24,3 @@
 #   debug:
 #     var: result
     # verbosity: 2
-
-- name: Plot data1 :#2
-  shell: "(nohup ~/{{ inventory_hostname }}/chia_plot_data.sh {{ knum }} {{ hostvars[inventory_hostname].rounds }} 4096 /media/ray/ssd /media/ray/data1 {{ hostvars[inventory_hostname].fingerprint }} {{ PARAM }} &)"
-  async: 2592000               # 60*60*24*30 – 1 month
-  poll: 0
-
-- name: Plot data2 :#1
-  shell: "(nohup ~/{{ inventory_hostname }}/chia_plot_data.sh {{ knum }} {{ hostvars[inventory_hostname].rounds }} 4096 /media/ray/ssd /media/ray/data2 {{ hostvars[inventory_hostname].fingerprint }} {{ PARAM }} &)"
-  async: 2592000               # 60*60*24*30 – 1 month
-  poll: 0
