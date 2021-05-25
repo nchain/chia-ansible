@@ -12,7 +12,7 @@
   shell: pkill chia || echo "none chia ps to kill"
   
 - name: "clean previous temp files"
-  shell: rm -rf /media/ray/ssd/*.tmp || echo "none tmpe file to clean"
+  shell: rm -rf /media/ray/ssd/* || echo "none tmpe file to clean"
 
 - name: Batch run plotting now...
   shell: "{{ ansible_env.HOME }}/{{ inventory_hostname }}/chia_plot_data_batch.sh"
