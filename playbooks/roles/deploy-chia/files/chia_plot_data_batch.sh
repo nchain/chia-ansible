@@ -34,8 +34,6 @@ function getAvailableDataPath {
 }
 
 function batch_exec {
-
-  cd ~/chia-batch
   source <(grep = "$PLOT_CONF")
 
   dataPath=$(getAvailableDataPath)
