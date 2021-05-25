@@ -60,7 +60,7 @@ function batch_exec {
     mkdir -p $tmp1Path $tmp2Path
     echo "$MYDIR/chia_plot_data.sh $tmp1Path $tmp2Path $dataPath &" >> $LOG
 
-    bash $MYDIR/chia_plot_data.sh $tmp1Path $tmp2Path $dataPath &
+    bash $MYDIR/chia_plot_data.sh $tmp1Path $tmp2Path $dataPath
 
     echo ">>> sleep $batchTaskInterval sec..." >> $LOG
     sleep $batchTaskInterval

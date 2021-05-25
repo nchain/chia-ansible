@@ -29,7 +29,7 @@ echo "######################################################################"
 echo "chia plots create $PARAMS"
 echo "######################################################################"
 # chia plots create $PARAMS > /dev/null 2>&1
-chia plots create $PARAMS
+chia plots create $PARAMS &
 ENDTIME=$(date +%s)
 
 echo "Start: $STARTTIME" >> $LOG
