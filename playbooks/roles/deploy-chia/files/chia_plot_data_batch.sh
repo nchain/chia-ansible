@@ -1,6 +1,7 @@
 #!/bin/bash
 
 MYDIR="$(dirname "$(readlink -f "$0")")"
+MYDIR=$1
 PLOT_CONF="$MYDIR"/plot.conf
 LOG=/tmp/chia-plot.log
 PARTIAL_DONE='partially-done'
@@ -59,7 +60,7 @@ function batch_exec {
     tmp2Path="$ssd2Path/tmp$plot_id"
     mkdir -p $tmp1Path $tmp2Path
     echo "bash $MYDIR/chia_plot_data.sh $tmp1Path $tmp2Path $dataPath" >> $LOG
-    
+
     bash $MYDIR/chia_plot_data.sh $tmp1Path $tmp2Path $dataPath
 
     echo ">>> sleep $batchTaskInterval sec..." >> $LOG
