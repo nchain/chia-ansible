@@ -96,7 +96,7 @@ do
   dataPath=$(getAvailableDataPath)
   [ -z "$dataPath" ] && echo $ALL_DONE  && sleep $maxPlottingPending && continue #all disks filled, can add new disks
 
-  plotting_cnt=$(ps aux |grep [p]lots | wc -l)
+  plotting_cnt=$(ps aux |grep "[p]lots" | wc -l)
   [ "$plotting_cnt" -ge "$maxPlotCount" ] && echo "max plotting count [ $maxPlotCount ] reached" && sleep $maxPlottingPending && continue #max plotting count reached
 
   [ "$plotting_cnt" -lt "$maxPlotCount" ] && batch_exec 1
