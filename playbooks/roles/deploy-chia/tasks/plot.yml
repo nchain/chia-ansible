@@ -15,7 +15,7 @@
   shell: rm -rf /media/ray/ssd/*.tmp || echo "none tmpe file to clean"
 
 - name: Batch run plotting now...
-  shell: "(nohup sh ~/{{ inventory_hostname }}/chia_plot_data_batch.sh &)"
+  shell: "(nohup bash ~/{{ inventory_hostname }}/chia_plot_data_batch.sh &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
   # register: result
