@@ -65,6 +65,8 @@ function get_plots {
   echo $(ls $dataPath/*.plot | wc -l)
 }
 
+source <(grep = "$PLOT_CONF")
+
 echo '######################## Phase 0: clean up SSD caches...'
 echo
 rm -rf $ssdPath/tmp*
