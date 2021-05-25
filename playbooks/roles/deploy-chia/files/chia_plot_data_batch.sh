@@ -2,8 +2,10 @@
 
 MYDIR="$(dirname "$(readlink -f "$0")")"
 PLOT_CONF="$MYDIR"/plot.conf
+LOG=/tmp/chia-plot.log
 PARTIAL_DONE='partially-done'
 ALL_DONE='all-done'
+
 
 function getAvailableDataPath {
   source <(grep = "$PLOT_CONF")
@@ -44,11 +46,14 @@ function batch_exec {
 
   plotting_cnt=$(ps aux |grep [p]lots | wc -l)
 
-  echo "run $todo_cnt plotting tasks in parallel..."
-  
+  echo "" >> $LOG
+  echo "" >> $LOG
+  echo "run $todo_cnt plotting tasks in parallel..." >> $LOG
+  echo "" >> $LOG
   for i in $(seq $todo_cnt)
   do
-    echo ">>> Starting batch[$i]"
+    echo ">>> Starting batch[$i]" >> $LOG
+
     plot_id=$(( $plotting_cnt + i))
     tmp1Path="$ssdPath/tmp$plot_id"
     tmp2Path="$ssd2Path/tmp$plot_id"
@@ -56,11 +61,11 @@ function batch_exec {
     mkdir -p $tmp1Path $tmp2Path
     bash $MYDIR/chia_plot_data.sh $tmp1Path $tmp2Path $dataPath &
 
-    echo ">>> sleep $batchTaskInterval sec..."
+    echo ">>> sleep $batchTaskInterval sec..." >> $LOG
     sleep $batchTaskInterval
   done
 
-  echo $PARTIAL_DONE
+  echo $PARTIAL_DONE >> $LOG
 }
 
 function get_plots {
@@ -70,26 +75,19 @@ function get_plots {
 
 source <(grep = "$PLOT_CONF")
 
-echo '######################## Phase 0: clean up SSD caches...'
+echo '######################## Phase 0: clean up SSD caches...' > $LOG
 echo
 rm -rf $ssdPath/tmp*
 rm -rf $ssd2Path/tmp*
 
 echo 
-echo '######################## Phase I exec...'
-echo 
+echo '######################## Phase I exec...' >> $LOG
+echo "maxPlottingPending=$maxPlottingPending" >> $LOG
+echo "maxLoopCount=$maxLoopCount" >> $LOG
+echo "maxPlotCount=$maxPlotCount" >> $LOG
+echo '' >> $LOG
 batch_exec
 # sleep $phaseInterval
-
-# echo 
-# echo '######################## Phase II exec...'
-# echo 
-# batch_exec
-# sleep $phaseInterval
-
-echo 
-echo '######################## Phase III exec...'
-echo 
 
 for step in $(seq 1 $maxLoopCount);
 do
