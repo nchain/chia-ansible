@@ -8,9 +8,11 @@ source <(grep = ./plot.conf )
 LOG=/tmp/chia-plot.log
 dataPath=$1
 
-PARAMS="-k $kNum -n $roundNum -b $taskRam -r$taskThreads -t $ssdPath -2 $ssd2Path -2 $ssdPath -d $dataPath"
-[ ! -z "$fpk" ] && PARAMS="$PARAMS -f $fpk"
-[ ! -z "$ppk" ] && PARAMS="$PARAMS -p $ppk"
+mkdir -p $ssd2Path
+
+PARAMS="-k$kNum -n$roundNum -b$taskRam -r$taskThreads -t$ssdPath -2$ssd2Path -d$dataPath"
+[ ! -z "$fpk" ] && PARAMS="$PARAMS -f$fpk"
+[ ! -z "$ppk" ] && PARAMS="$PARAMS -p$ppk"
 
 echo "PARAMS='$PARAMS'"
 
@@ -19,8 +21,8 @@ echo "chia plots create $PARAMS" >> $LOG
 echo "#############################################################" >> $LOG
 
 STARTTIME=$(date +%s)
-cd ~/chia-blockchain
-. ./activate
+. ~/chia-blockchain/activate
+
 echo "######################################################################"
 echo "chia plots create $PARAMS"
 echo "######################################################################"
