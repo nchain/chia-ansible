@@ -2,9 +2,11 @@
 
 MYDIR="$(dirname "$(readlink -f "$0")")"
 PLOT_CONF="$MYDIR"/plot.conf
-source <(grep = "$PLOT_CONF")
+cd $MYDIR
+source <(grep = ./plot.conf )
 
 LOG=/tmp/chia-plot.log
+dataPath=$1
 
 PARAMS="-k $kNum -n $roundNum -b $taskRam -r$taskThreads -t $ssdPath -2 $ssd2Path -2 $ssdPath -d $dataPath"
 [ ! -z "$fpk" ] && PARAMS="$PARAMS -f $fpk"
