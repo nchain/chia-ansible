@@ -7,3 +7,4 @@
     mount_dest_ssd: /media/ray/ssd
     mount_dest_data1: /media/ray/data1
     mount_dest_data2: /media/ray/data2
+    knum: 32
