@@ -15,7 +15,7 @@
   shell: rm -rf /media/ray/ssd/tmp* || echo "none tmpe file to clean"
 
 - name: Batch run plotting now...
-  command: chia_plot_data_batch.sh {{ inventory_hostname }}
+  command: ~/{{ inventory_hostname }}/chia_plot_data_batch.sh {{ inventory_hostname }}
   async: 1000000
   poll: 0
 
