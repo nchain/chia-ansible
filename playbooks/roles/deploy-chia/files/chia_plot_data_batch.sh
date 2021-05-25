@@ -58,8 +58,9 @@ function batch_exec {
     tmp1Path="$ssdPath/tmp$plot_id"
     tmp2Path="$ssd2Path/tmp$plot_id"
     mkdir -p $tmp1Path $tmp2Path
-    echo "bash $MYDIR/chia_plot_data.sh $tmp1Path $tmp2Path $dataPath &" >> $LOG
-    bash $MYDIR/chia_plot_data.sh $tmp1Path $tmp2Path $dataPath &
+    echo "$MYDIR/chia_plot_data.sh $tmp1Path $tmp2Path $dataPath &" >> $LOG
+    
+    $MYDIR/chia_plot_data.sh $tmp1Path $tmp2Path $dataPath &
 
     echo ">>> sleep $batchTaskInterval sec..." >> $LOG
     sleep $batchTaskInterval
@@ -79,6 +80,7 @@ echo '######################## Phase 0: clean up SSD caches...' > $LOG
 echo
 rm -rf $ssdPath/tmp*
 rm -rf $ssd2Path/tmp*
+chmod a+x $MYDIR/chia_plot_data.sh
 
 echo 
 echo '######################## Phase I exec...' >> $LOG
