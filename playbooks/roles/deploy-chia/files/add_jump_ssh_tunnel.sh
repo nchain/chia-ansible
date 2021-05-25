@@ -1,3 +1,5 @@
+#!/usr/bin/bash
+
 # ssh -fN -R hn-jump:10022:localhost:22 richardchen@hn-jump 
 
 cd ~ && source <(grep = "autossh.conf")
