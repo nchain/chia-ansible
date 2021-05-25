@@ -1,34 +1,29 @@
 #!/bin/bash
 
-kNum=$1         # file format E.g. k32
-roundNum=$2     # round num
-taskRam=$3      # ram size per task, E.g. 4000
-ssdPath=$4
-dataPath=$5
-fingerprint=$6
-threads=$7
-fpk=$8
-ppk=$9
-
-cachePath=/media/ray/data2/cache
+PLOT_CONF=$1/plot.conf
+source <(grep = "$PLOT_CONF")
 
 LOG=/tmp/chia-plot.log
 
-PARAMS="-k$kNum -n$roundNum -b$taskRam -t$ssdPath -2$cachePath -d$dataPath"
-[ ! -z "$fingerprint" ] && PARAMS="$PARAMS -a$fingerprint"
-[ ! -z "$threads" ] && PARAMS="$PARAMS -r$threads"
-[ ! -z "$fpk" ] && PARAMS="$PARAMS -f$fpk"
-[ ! -z "$ppk" ] && PARAMS="$PARAMS -p$ppk"
+PARAMS="-k $kNum -n $roundNum -b $taskRam -r$taskThreads -t $ssdPath -2 $ssd2Path -2 $ssdPath -d $dataPath"
+[ ! -z "$fpk" ] && PARAMS="$PARAMS -f $fpk"
+[ ! -z "$ppk" ] && PARAMS="$PARAMS -p $ppk"
 
-cd ~/chia-blockchain
-. ./activate
+echo "PARAMS='$PARAMS'"
 
 echo "#############################################################" >> $LOG
 echo "chia plots create $PARAMS" >> $LOG
 echo "#############################################################" >> $LOG
 
 STARTTIME=$(date +%s)
-chia plots create $PARAMS # > /dev/null 2>&1
+cd ~/chia-blockchain
+. ./activate
+echo "######################################################################"
+echo "chia plots create $PARAMS"
+echo "######################################################################"
+# chia plots create $PARAMS > /dev/null 2>&1
+chia plots create $PARAMS
 ENDTIME=$(date +%s)
 
-echo "It takes $(($ENDTIME - $STARTTIME)) sec to complete this plotting" >> $LOG
+echo "Start: $STARTTIME" >> $LOG
+echo "End: $ENDTIME" >> $LOG

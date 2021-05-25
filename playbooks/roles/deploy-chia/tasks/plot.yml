@@ -1,3 +1,7 @@
+
+- name: "generate plot.conf"
+  template: src=plot_conf.j2 dest=~/{{ inventory_hostname }}/plot.conf force=yes
+
 - name: "copy chia_plot_data.sh to ~/{{ inventory_hostname }} "
   copy: src=chia_plot_data.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
 
@@ -7,8 +11,8 @@
 - name: "clean previous temp files"
   shell: rm -rf /media/ray/ssd/*.tmp || echo "none tmpe file to clean"
 
-- name: Plot data1 :#1
-  shell: "(nohup ~/{{ inventory_hostname }}/chia_plot_data.sh {{ knum }} {{ hostvars[inventory_hostname].rounds }} 4096 /media/ray/ssd /media/ray/data1 {{ hostvars[inventory_hostname].fingerprint }} {{ PARAM }} &)"
+- name: Plot data now...
+  shell: "(nohup ~/{{ inventory_hostname }}/chia_plot_data.sh  &)"
   async: 2592000               # 60*60*24*30 – 1 month
   poll: 0
   # register: result
