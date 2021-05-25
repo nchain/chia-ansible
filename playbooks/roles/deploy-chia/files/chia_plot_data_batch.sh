@@ -44,6 +44,8 @@ function batch_exec {
 
   plotting_cnt=$(ps aux |grep [p]lots | wc -l)
 
+  echo "run $todo_cnt plotting tasks in parallel..."
+  
   for i in $(seq $todo_cnt)
   do
     echo ">>> Starting batch[$i]"
