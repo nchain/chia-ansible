@@ -12,7 +12,10 @@
   shell: pkill chia || echo "none chia ps to kill"
   
 - name: "clean previous temp files"
-  shell: rm -rf /media/ray/ssd/tmp* || echo "none tmpe file to clean"
+  shell: rm -rf /media/ray/ssd/*.tmp || echo "none temp file to clean"
+
+- name: "clean previous temp dirs"
+  shell: rm -rf /media/ray/ssd/tmp* || echo "none temp dir to clean"
 
 - name: Batch run plotting now...
   command: ~/{{ inventory_hostname }}/chia_plot_data_batch.sh {{ inventory_hostname }}
