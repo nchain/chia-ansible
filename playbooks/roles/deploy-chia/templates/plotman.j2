@@ -1,5 +1,17 @@
 # Default/example plotman.yaml configuration file
 
+# https://github.com/ericaltendorf/plotman/wiki/Configuration#versions
+version: [1]
+
+logging:
+        # One directory in which to store all plot job logs (the STDOUT/
+        # STDERR of all plot jobs).  In order to monitor progress, plotman
+        # reads these logs on a regular basis, so using a fast drive is
+        # recommended.
+        plots: /home/rad/chia/logs
+        # transfers:
+        # application:
+
 # Options for display and rendering
 user_interface:
         # Call out to the `stty` program to determine terminal size, instead of
@@ -15,15 +27,10 @@ commands:
                 # Set it to False if you don't want to auto start plotting when 'interactive' is ran.
                 # You can override this value from the command line, type "plotman interactive -h" for details
                 autostart_plotting: True
+                # autostart_archiving: True
 
 # Where to plot and log.
 directories:
-        # One directory in which to store all plot job logs (the STDOUT/
-        # STDERR of all plot jobs).  In order to monitor progress, plotman
-        # reads these logs on a regular basis, so using a fast drive is
-        # recommended.
-        log: /home/rad/rad/logs
-
         # One or more directories to use as tmp dirs for plotting.  The
         # scheduler will use all of them and distribute jobs among them.
         # It assumes that IO is independent for each one (i.e., that each
@@ -49,7 +56,7 @@ directories:
         # Currently support override parameters:
         #     - tmpdir_max_jobs
         tmp_overrides:
-                # In this example, /mnt/tmp/00 is larger than the other tmp
+                # In this example, /mnt/ssd/00 is larger than the other tmp
                 # dirs and it can hold more plots than the default.
                 "/mnt/ssd/00":
                         tmpdir_max_jobs: 3
@@ -73,32 +80,36 @@ directories:
           - /mnt/data05
           - /mnt/data06
 
-        # Archival configuration.  Optional; if you do not wish to run the
-        # archiving operation, comment this section out.
-        #
-        # Currently archival depends on an rsync daemon running on the remote
-        # host.
-        # The archival also uses ssh to connect to the remote host and check
-        # for available directories. Set up ssh keys on the remote host to
-        # allow public key login from rsyncd_user.
-        # Complete example: https://github.com/ericaltendorf/plotman/wiki/Archiving
-        #archive:
-         #       rsyncd_module: plots # Define this in remote rsyncd.conf.
-          #      rsyncd_path: /plots # This is used via ssh. Should match path
-           #                         # defined in the module referenced above.
-            #    rsyncd_bwlimit: 80000  # Bandwidth limit in KB/s
-             #   rsyncd_host: myfarmer
-              #  rsyncd_user: chia
-                # Optional index.  If omitted or set to 0, plotman will archive
-                # to the first archive dir with free space.  If specified,
-                # plotman will skip forward up to 'index' drives (if they exist).
-                # This can be useful to reduce io contention on a drive on the
-                # archive host if you have multiple plotters (simultaneous io
-                # can still happen at the time a drive fills up.)  E.g., if you
-                # have four plotters, you could set this to 0, 1, 2, and 3, on
-                # the 4 machines, or 0, 1, 0, 1.
-                #   index: 0
-
+# Archival configuration.  Optional; if you do not wish to run the
+# archiving operation, comment this section out.  Almost everyone
+# should be using the archival feature.  It is meant to distribute
+# plots among multiple disks filling them all.  This can be done both
+# to local and to remote disks.
+#
+# As of v0.4, archiving commands are highly configurable.  The basic
+# configuration consists of a script for checking available disk space
+# and another for actually transferring plots.  Each can be specified
+# as either a path to an existing script or inline script contents.
+# It is expected that most people will use existing recipes and will
+# adjust them by specifying environment variables that will set their
+# system specific values.  These can be provided to the scripts via
+# the `env` key.  plotman will additionally provide `source` and
+# `destination` environment variables to the transfer script so it
+# knows the specifically selected items to process.  plotman also needs
+# to be able to generally detect if a transfer process is already
+# running.  To be able to identify externally launched transfers, the
+# process name and an argument prefix to match must be provided.  Note
+# that variable substitution of environment variables including those
+# specified in the env key can be used in both process name and process
+# argument prefix elements but that they use the python substitution
+# format.
+#
+# Complete example: https://github.com/ericaltendorf/plotman/wiki/Archiving
+#archiving:
+#  target: local_rsync
+#  env:
+#    command: rsync
+#    site_root: /farm/sites
 
 # Plotting scheduling parameters
 scheduling:
@@ -139,8 +150,8 @@ plotting:
         n_buckets: 128       # Number of buckets to split data into
         job_buffer: 5460     # Per job memory
         # If specified, pass through to the -f and -p options.  See CLI reference.
-        farmer_pk: a466f333604f09dfcc427c7452e46a94555d9390180a6d6a8364063871b8d3b6aa70dc4f7908718f2d5a237a23ded979
-        pool_pk: b29a07cdc100382ab2875819d5b997e77c33ebbb6bd33396cae2e4f0f6cd0c38523e32a22b06ba60b1298211e2b2b75f
+        #   farmer_pk: ...
+        #   pool_pk: ...
         # If true, Skips adding [final dir] / dst to harvester for farming. 
         # Especially useful if you have harvesters that are running somewhere else
         # and you are just plotting on the machine where plotman is running.
