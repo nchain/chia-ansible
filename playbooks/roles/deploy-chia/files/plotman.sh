@@ -2,8 +2,9 @@
 
 for x in {0..7}
 do
-    sudo mkdir -p /mnt/ssd/0$x
-    sudo chown rad. /mnt/ssd/0$x
+    tmp_dir="/mnt/ssd/0$x"
+    sudo mkdir -p $tmp_dir
+    sudo chown rad. $tmp_dir
 done
 
 plotman plot
