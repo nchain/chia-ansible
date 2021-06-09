@@ -13,6 +13,9 @@
 - include_tasks: plot.yml
   when: ACTION == "plot"
 
+- include_tasks: plotman.yml
+  when: ACTION == "plotman"
+
 - include_tasks: plotrad.yml
   when: ACTION == "plotrad"
 
