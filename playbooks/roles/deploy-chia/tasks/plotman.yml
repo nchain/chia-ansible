@@ -14,7 +14,7 @@
 - name: Run plotman now...
   command: ~/{{ inventory_hostname }}/plotman.sh
   async: 500000
-  poll: 0
+  poll: 10
 
   # register: result
 
