@@ -1,2 +1,2 @@
 . ~/chia-blockchain/activate
-plotman plot &
+plotman plot
