@@ -12,9 +12,7 @@
 #  shell: rm -rf /media/ray/ssd/tmp* || echo "none temp dir to clean"
 
 - name: Run plotman now...
-  command: bash ~/{{ inventory_hostname }}/plotman.sh
-  async: 500000
-  poll: 10
+  command: nohup bash ~/{{ inventory_hostname }}/plotman.sh &
 
   # register: result
 
