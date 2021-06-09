@@ -9,7 +9,7 @@
 #  shell: rm -rf /media/ray/ssd/tmp* || echo "none temp dir to clean"
 
 - name: Run plotman now...
-  command: . ~/chia-blockchain/activate && plotman plot
+  command: . ~/chia-blockchain/activate && plotman plot &
   async: 1000000
   poll: 0
 
