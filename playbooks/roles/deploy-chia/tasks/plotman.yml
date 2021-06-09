@@ -1,0 +1,21 @@
+
+- name: "generate plotman.yaml"
+  template: src=plotman.j2 dest=~/.config/plotman/plotman.yaml force=yes
+
+#- name: "clean previous plotting tasks"
+#  shell: pkill chia || echo "none chia ps to kill"
+  
+#- name: "clean previous temp dirs"
+#  shell: rm -rf /media/ray/ssd/tmp* || echo "none temp dir to clean"
+
+- name: Run plotman now...
+  command: . ~/chia-blockchain/activate && plotman plot 2>&1 &
+  async: 1000000
+  poll: 0
+
+  # register: result
+
+# - name: get previous result
+#   debug:
+#     var: result
+    # verbosity: 2
