@@ -1,15 +1,13 @@
 path:
-- /media/{{ MOUNT }}/data1
-- /media/{{ MOUNT }}/data2
-minerName: "{{ hostvars[inventory_hostname].group_names[0] }}-{{ inventory_hostname }}"
-apiKey: "{{ hostvars[inventory_hostname].apikey }}"
+minerName:
+apiKey:
 cachePath: ""
-deviceId: "{{ inventory_hostname }}"
+deviceId: ""
 extraParams: {}
 log:
   lv: info
-  path: ./hpool_logs/
-  name: "{{ hostvars[inventory_hostname].group_names[0] }}-{{ inventory_hostname }}"
+  path: ./log/
+  name: miner.log
 url:
   # 一个局域网内，代理只需要开一台就可以了，如代理所在的机器Ip是192.168.1.88，端口9190
   # 下面配置改为
@@ -18,5 +16,6 @@ url:
   # The following configuration is changed to
   # proxy: "http://192.168.1.88:9190"
   proxy: ""
-scanPath: true
+scanPath: false
 scanMinute: 60
+
