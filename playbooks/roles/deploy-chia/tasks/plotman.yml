@@ -2,6 +2,10 @@
 - name: "generate plotman.yaml"
   template: src=plotman.j2 dest=~/.config/plotman/plotman.yaml force=yes
 
+- name: "clean temp files"
+  script: clean_temp.sh
+  when: PARAM == "clean-ssd"
+
 - name: "create dir ~/{{ inventory_hostname }}"
   shell: mkdir -p ~/{{ inventory_hostname }}
   
