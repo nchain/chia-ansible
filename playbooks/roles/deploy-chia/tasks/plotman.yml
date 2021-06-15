@@ -29,4 +29,4 @@
 - name: Run plotman now...
   shell: bash ~/{{ inventory_hostname }}/plotman.sh
   async: 36000000 #10000 hours
-  poll: 5  # 10 seconds
+  poll: 0  # 10 seconds
