@@ -20,6 +20,12 @@
 - name: "copy plotman.sh to ~/{{ inventory_hostname }} "
   copy: src=plotman.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
 
+
+- name: kill all chia
+  shell: killall chia || echo "non chia to kill"
+  become: true
+  ignore_errors: yes
+
 - name: Run plotman now...
   shell: bash ~/{{ inventory_hostname }}/plotman.sh
   async: 36000000 #10000 hours
