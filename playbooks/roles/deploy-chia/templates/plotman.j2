@@ -8,7 +8,7 @@ logging:
         # STDERR of all plot jobs).  In order to monitor progress, plotman
         # reads these logs on a regular basis, so using a fast drive is
         # recommended.
-        plots: /home/rad/chia/logs
+        plots: ~/{{ inventory_hostname }}/plotman/logs
         # transfers:
         # application:
 
@@ -39,14 +39,9 @@ directories:
         # If multiple directories share a common prefix, reports will
         # abbreviate and show just the uniquely identifying suffix.
         tmp:
-          - /mnt/ssd/00
-          - /mnt/ssd/01
-          - /mnt/ssd/02
-          - /mnt/ssd/03
-          - /mnt/ssd/04
-          - /mnt/ssd/05
-          - /mnt/ssd/06
-          - /mnt/ssd/07
+        {% for tmpPath in hostvars[inventory_hostname].tmpPathArr %}
+          - {{ tmpPath }}
+        {% endfor %}
 
         # Optional: Allows overriding some characteristics of certain tmp
         # directories. This contains a map of tmp directory names to
@@ -73,12 +68,9 @@ directories:
         # If dst is commented out, the tmp directories will be used as the
         # buffer.
         dst:
-          - /mnt/data01
-          - /mnt/data02
-          - /mnt/data03
-          - /mnt/data04
-          - /mnt/data05
-          - /mnt/data06
+         {% for dataPath in hostvars[inventory_hostname].dataPathArr %}
+          - {{ dataPath }}
+         {% endfor %}
 
 # Archival configuration.  Optional; if you do not wish to run the
 # archiving operation, comment this section out.  Almost everyone
@@ -131,10 +123,10 @@ scheduling:
         tmpdir_max_jobs: 3
 
         # Don't run more than this many jobs at a time in total.
-        global_max_jobs: 8
+        global_max_jobs: {{ hostvars[inventory_hostname].global_max_jobs }}
 
         # Don't run any jobs (across all temp dirs) more often than this, in minutes.
-        global_stagger_m: 30
+        global_stagger_m: {{ hostvars[inventory_hostname].global_stagger_m }}
 
         # How often the daemon wakes to consider starting a new plot job, in seconds.
         polling_time_s: 20
@@ -152,6 +144,7 @@ plotting:
         # If specified, pass through to the -f and -p options.  See CLI reference.
         farmer_pk: {{ hostvars[inventory_hostname].fpk }}
         pool_pk: {{ hostvars[inventory_hostname].ppk }}
+
         # If true, Skips adding [final dir] / dst to harvester for farming. 
         # Especially useful if you have harvesters that are running somewhere else
         # and you are just plotting on the machine where plotman is running.
