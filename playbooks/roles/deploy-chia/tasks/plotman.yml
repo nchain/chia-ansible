@@ -1,23 +1,21 @@
 
+- name: "create dir ~/{{ inventory_hostname }}"
+  shell: mkdir -p ~/{{ inventory_hostname }}
+  
 - name: "generate plotman.yaml"
   template: src=plotman.j2 dest=~/.config/plotman/plotman.yaml force=yes
 
 - name: "clean temp files"
-  script: clean_temp.sh
-  when: PARAM == "clean-ssd"
-
-- name: "create dir ~/{{ inventory_hostname }}"
-  shell: mkdir -p ~/{{ inventory_hostname }}
-  
-- name: "copy plotman.sh to ~/{{ inventory_hostname }} "
-  copy: src=plotman.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
+  shell: rm -rf {{ item }}/* || echo "none temp dir to clean"
+  loop: hostvars[inventory_hostname].tmpPathArr
+  when: PARAM == "cleantmp"
 
 - name: create tmp dirs
   shell: sudo mkdir -p {{ item }} && sudo chown {{ ansible_user }}. {{ item }}
   loop:  hostvars[inventory_hostname].tmpPathArr
 
-#- name: "clean previous temp dirs"
-#  shell: rm -rf /media/ray/ssd/tmp* || echo "none temp dir to clean"
+- name: "copy plotman.sh to ~/{{ inventory_hostname }} "
+  copy: src=plotman.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
 
 - name: Run plotman now...
   shell: bash ~/{{ inventory_hostname }}/plotman.sh
