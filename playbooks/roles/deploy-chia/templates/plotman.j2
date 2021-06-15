@@ -136,11 +136,11 @@ scheduling:
 # See documentation at
 # https://github.com/Chia-Network/chia-blockchain/wiki/CLI-Commands-Reference#create
 plotting:
-        k: 32
+        k: {{ hostvars[inventory_hostname].k }}
         e: False             # Use -e plotting option
-        n_threads: 6         # Threads per job
-        n_buckets: 128       # Number of buckets to split data into
-        job_buffer: 5460     # Per job memory
+        n_threads: {{ hostvars[inventory_hostname].n_threads }}         # Threads per job
+        n_buckets: {{ hostvars[inventory_hostname].n_buckets }}         # Number of buckets to split data into
+        job_buffer: {{ hostvars[inventory_hostname].job_buffer }}       # Per job memory
         # If specified, pass through to the -f and -p options.  See CLI reference.
         farmer_pk: {{ hostvars[inventory_hostname].fpk }}
         pool_pk: {{ hostvars[inventory_hostname].ppk }}
