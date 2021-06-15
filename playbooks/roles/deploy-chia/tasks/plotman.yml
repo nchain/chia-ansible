@@ -10,12 +10,12 @@
 
 - name: "clean temp files"
   shell: rm -rf {{ item }}/* || echo "none temp dir to clean"
-  loop: {{ hostvars[inventory_hostname].tmpPathArr }}
+  loop: "{{ hostvars[inventory_hostname].tmpPathArr }}"
   when: PARAM == "cleantmp"
 
 - name: create tmp dirs
   shell: sudo mkdir -p {{ item }} && sudo chown {{ ansible_user }}. {{ item }}
-  loop: {{ hostvars[inventory_hostname].tmpPathArr }}
+  loop: "{{ hostvars[inventory_hostname].tmpPathArr }}"
 
 - name: "copy plotman.sh to ~/{{ inventory_hostname }} "
   copy: src=plotman.sh dest=~/{{ inventory_hostname }} mode=755 force=yes
